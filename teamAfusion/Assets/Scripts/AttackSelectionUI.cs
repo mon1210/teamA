@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicSelectionUI : MonoBehaviour
+public class AttackSelectionUI : MonoBehaviour
 {
     //æ“¾‚µ‚½q—v‘f‚ÌSelectableText‚Ì”‚ğo‚·
-    SelectableText[] selectableTexts;
+    [SerializeField] SelectableText[] selectableTexts;
 
 
     int selectedIndex;

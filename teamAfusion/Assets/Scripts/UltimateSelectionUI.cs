@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicSelectionUI : MonoBehaviour
+public class UltimateSelectionUI : MonoBehaviour
 {
     //æ“¾‚µ‚½q—v‘f‚ÌSelectableText‚Ì”‚ğo‚·
     SelectableText[] selectableTexts;
