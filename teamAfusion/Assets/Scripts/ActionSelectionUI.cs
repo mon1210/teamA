@@ -7,33 +7,31 @@ public class ActionSelectionUI : MonoBehaviour
     /// <summary>
     /// こうげき、まほう、ひっさつを選択中かを判断、色変更
     /// </summary>
-    
+
     //取得した子要素のSelectableTextの数を出す
-    [SerializeField]SelectableText[] selectableTexts;
+    SelectableText[] selectableTexts;
+
 
     int selectedIndex;//0:こうげき、1:まほう、2:ひっさつ
-    // Start is called before the first frame update
-    void Start()
-    {
-        //子要素のSelectableTextを取得する関数の呼び出し
-        init();
-    }
+
+    //selectedIndexを取得できるように
+    public int SelectedIndex { get => selectedIndex; }
 
     // Update is called once per frame
     void Update()
     {
         //選択中のテキストの色変更
-        changeTextColor();
+        //ChangeTextColor();
     }
 
-    private void init()
+    public void Init()
     {
         //子要素のSelectableTextを取得
         selectableTexts = GetComponentsInChildren<SelectableText>();
     }
 
     //選択中のテキストの色を変更する関数
-    private void changeTextColor()
+    public void ChangeTextColor()
     {
         //上入力で上のテキスト選択
         if(Input.GetKeyDown(KeyCode.UpArrow)) 
@@ -62,5 +60,14 @@ public class ActionSelectionUI : MonoBehaviour
             }
 
         }
+    }
+
+    public void OpenActionSelectionUI()
+    {
+        //0に初期化
+        selectedIndex = 0;
+        //
+        gameObject.SetActive(true);
+
     }
 }
