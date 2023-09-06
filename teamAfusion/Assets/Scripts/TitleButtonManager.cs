@@ -15,9 +15,9 @@ public class TitleButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            /*FadeManager.Instance.*//*LoadScene("SampleScene", 0.5f);
-        }*/
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
