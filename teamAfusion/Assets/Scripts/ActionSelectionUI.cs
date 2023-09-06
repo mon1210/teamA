@@ -62,7 +62,7 @@ public class ActionSelectionUI : MonoBehaviour
         }
     }
 
-    public void OpenActionSelectionUI()
+    public void OpenSelectionUI()
     {
         //0Ç…èâä˙âª
         selectedIndex = 0;
