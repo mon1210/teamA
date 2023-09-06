@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
+    //
+    [SerializeField] ActionSelectionUI actionSelectionUI;
+
     enum Phase
     {
         Start,
@@ -17,8 +20,9 @@ public class BattleSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        phase= Phase.Start;
-
+        actionSelection();
+        //子要素のSelectableTextを取得する関数の呼び出し
+        actionSelectionUI.Init();
     }
 
     // Update is called once per frame
@@ -32,16 +36,15 @@ public class BattleSystem : MonoBehaviour
         switch (phase)
         {
             case Phase.Start:
-                phase = Phase.ActionSelection;
                 break;
             case Phase.ActionSelection:
-                HandleActionSelection();
+                handleActionSelection();
                 break;
             case Phase.AttackSelection:
-                HandleAttackSelection();
+                handleAttackSelection();
                 break;
             case Phase.MagicSelection:
-                HandleMagicSelection();
+                handleMagicSelection();
                 break;
             case Phase.BattleOver:
                 break;
@@ -49,15 +52,41 @@ public class BattleSystem : MonoBehaviour
                 break;
         }
     }
-    private void HandleActionSelection()
+    private void actionSelection()
+    {
+        //phaseをバトルアクションへ
+        phase = Phase.ActionSelection;
+        //アクションセレクションUIを表示
+        actionSelectionUI.OpenActionSelectionUI();
+    }
+
+    private void handleActionSelection()
+    {
+        //選択したもののテキスト色変更
+        actionSelectionUI.ChangeTextColor();
+
+        //
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (actionSelectionUI.SelectedIndex == 0)
+            {
+                Debug.Log("こうげき");
+            }
+            else if (actionSelectionUI.SelectedIndex == 1)
+            {
+                Debug.Log("まほう");
+            }
+            else
+            {
+                Debug.Log("ひっさつ");
+            }
+        }
+    }
+    private void handleAttackSelection()
     {
 
     }
-    private void HandleAttackSelection()
-    {
-
-    }
-    private void HandleMagicSelection()
+    private void handleMagicSelection()
     {
 
 
