@@ -9,6 +9,7 @@ public class CharacterSelection: MonoBehaviour
 { 
     public GameObject[] selectButton = new GameObject[6];
     public bool [] isSelect=new bool[6];
+    int counter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class CharacterSelection: MonoBehaviour
     {
         //ògÇÃï\é¶êÿÇËë÷Ç¶
         ClickChecker();
+        Choice();
     }
 
     public void OnButton()
@@ -112,6 +114,23 @@ public class CharacterSelection: MonoBehaviour
         else
         {
             selectButton[5].SetActive(true);
+        }
+    }
+
+    void Choice()
+    {
+        counter = 0;
+        for(int i= 0;i<6;i++)
+        {
+            if (isSelect[i]==true)
+            {
+                counter++;
+            }             
+        }
+        if(counter == 3)
+        {
+            SceneManager.LoadScene("SampleScene");
+            Debug.Log("îΩâû");
         }
     }
 
