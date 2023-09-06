@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ChangeScene: MonoBehaviour
-{
-    public GameObject[] selectButton = new GameObject[3];
-    public bool [] isSelect=new bool[3];
+public class CharacterSelection: MonoBehaviour
+{ 
+    public GameObject[] selectButton = new GameObject[6];
+    public bool [] isSelect=new bool[6];
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
@@ -26,6 +25,7 @@ public class ChangeScene: MonoBehaviour
         //枠の表示切り替え
         ClickChecker();
     }
+
     public void OnButton()
     {
         //クリックされるたびにONとOFFを切り替える
@@ -42,6 +42,22 @@ public class ChangeScene: MonoBehaviour
         isSelect[2] = !isSelect[2];
         Debug.Log("押された");
     }
+    public void OnButton4()
+    {
+        isSelect[3] = !isSelect[3];
+        Debug.Log("押された");
+    }
+    public void OnButton5()
+    {
+        isSelect[4] = !isSelect[4];
+        Debug.Log("押された");
+    }
+    public void OnButton6()
+    {
+        isSelect[5] = !isSelect[5];
+        Debug.Log("押された");
+    }
+
 
     void ClickChecker()
     {
@@ -72,6 +88,30 @@ public class ChangeScene: MonoBehaviour
         else
         {
             selectButton[2].SetActive(true);
+        }
+        if (isSelect[3] == false)
+        {
+            selectButton[3].SetActive(false);
+        }
+        else
+        {
+            selectButton[3].SetActive(true);
+        }
+        if (isSelect[4] == false)
+        {
+            selectButton[4].SetActive(false);
+        }
+        else
+        {
+            selectButton[4].SetActive(true);
+        }
+        if (isSelect[5] == false)
+        {
+            selectButton[5].SetActive(false);
+        }
+        else
+        {
+            selectButton[5].SetActive(true);
         }
     }
 
