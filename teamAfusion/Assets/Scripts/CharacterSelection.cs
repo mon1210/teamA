@@ -7,19 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelection: MonoBehaviour
 { 
-    public GameObject[] selectButton = new GameObject[6];
-    public bool [] isSelect=new bool[6];
-    int counter = 0;
+    public GameObject[] selectButton = new GameObject[7];
+    public bool [] isSelect=new bool[7];
+    public int counter = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 7; i++)
         {
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
-        }      
+        }
+       
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -59,6 +61,11 @@ public class CharacterSelection: MonoBehaviour
         isSelect[5] = !isSelect[5];
         Debug.Log("押された");
     }
+    public void OnButton7()
+    {
+        isSelect[6] = !isSelect[6];
+        Debug.Log("押された");
+    }
 
 
     void ClickChecker()
@@ -73,7 +80,6 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[0].SetActive(true);
         }
-
         if (isSelect[1] == false)
         {
             selectButton[1].SetActive(false);
@@ -82,7 +88,6 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[1].SetActive(true);
         }
-
         if (isSelect[2] == false)
         {
             selectButton[2].SetActive(false);
@@ -115,23 +120,32 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[5].SetActive(true);
         }
+        if (isSelect[6] == false)
+        {
+            selectButton[6].SetActive(false);
+        }
+        else
+        {
+            selectButton[6].SetActive(true);
+        }
     }
 
     void Choice()
     {
         counter = 0;
-        for(int i= 0;i<6;i++)
-        {
+       for(int i= 0;i<7;i++)
+       {
             if (isSelect[i]==true)
             {
                 counter++;
             }             
-        }
-        if(counter == 3)
+       }
+        if(counter == 4)
         {
             SceneManager.LoadScene("SampleScene");
             Debug.Log("反応");
-        }
+           
+        } 
     }
 
 }
