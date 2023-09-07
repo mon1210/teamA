@@ -129,6 +129,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[6].SetActive(true);
         }
     }
+    //キャラクター選択結果にシーン移動する処理
     void Choice()
     {
         if (isSelect[0] == true && isSelect[6]==true)
@@ -141,19 +142,19 @@ public class CharacterSelection: MonoBehaviour
         }
         else if (isSelect[2] == true && isSelect[6] == true)
         {
-            SceneManager.LoadScene("ResultScene2");
+            SceneManager.LoadScene("ResultScene3");
         }
         else if(isSelect[3] == true &&  isSelect[6] == true)
         {
-            SceneManager.LoadScene("ResultScene2");
+            SceneManager.LoadScene("ResultScene4");
         }
         else if (isSelect[4] == true && isSelect[6] == true)
         {
-            SceneManager.LoadScene("ResultScene2");
+            SceneManager.LoadScene("ResultScene");
         }
         else if(isSelect[5] == true &&  isSelect[6] == true)
         {
-            SceneManager.LoadScene("ResultScene3");
+            SceneManager.LoadScene("ResultScene2");
         }
        
       
