@@ -66,4 +66,12 @@ public class AttackSelectionUI : MonoBehaviour
         gameObject.SetActive(true);
 
     }
+    public void CloseSelectionUI()
+    {
+        //0Ç…èâä˙âª
+        selectedIndex = 0;
+        //
+        gameObject.SetActive(false);
+
+    }
 }
