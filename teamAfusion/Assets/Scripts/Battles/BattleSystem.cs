@@ -12,8 +12,12 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] MagicSelectionUI magicSelectionUI;
     //ひっさつ選択UIの取得
     [SerializeField] UltimateSelectionUI ultimateSelectionUI;
-    //
+    //ダイアログの取得
     [SerializeField] BattleDialog battleDialog;
+    //
+    [SerializeField] BattleUnit playerUnit;
+    //
+    [SerializeField] BattleUnit enemyUnit;
 
     //phase分けの変数宣言
     enum Phase
@@ -30,7 +34,7 @@ public class BattleSystem : MonoBehaviour
     Phase phase;
 
     // Start is called before the first frame update
-    void Start()
+    public void BattleStart(Battler player, Battler enemy)
     {
         //初期化処理
         phase = Phase.Start;
@@ -45,12 +49,14 @@ public class BattleSystem : MonoBehaviour
 
         actionSelectionUI.CloseSelectionUI();
         //
-        StartCoroutine(setupBattle());
+        StartCoroutine(setupBattle(player, enemy));
     }
 
     //ダイアログのタイプが終わったらアクションセレクションへ
-    private IEnumerator setupBattle()
+    private IEnumerator setupBattle(Battler player,Battler enemy)
     {
+        playerUnit.Setup(player);
+        enemyUnit.Setup(enemy);
         //表示しきるまで待機
         yield return battleDialog.TypeDialog("やまれんが現れた！\nどうする？");
         //アクションセレクションを用意する関数の呼び出し
