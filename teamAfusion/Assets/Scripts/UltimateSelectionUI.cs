@@ -7,19 +7,13 @@ public class UltimateSelectionUI : MonoBehaviour
     //取得した子要素のSelectableTextの数を出す
     SelectableText[] selectableTexts;
 
-
+    //選択されている要素のインデックス
     int selectedIndex;
 
     //selectedIndexを取得できるように
     public int SelectedIndex { get => selectedIndex; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //選択中のテキストの色変更
-        //ChangeTextColor();
-    }
-
+    //自分に含まれている子要素を取得する関数
     public void Init()
     {
         //子要素のSelectableTextを取得
@@ -58,19 +52,21 @@ public class UltimateSelectionUI : MonoBehaviour
         }
     }
 
+    //UIを表示するための関数
     public void OpenSelectionUI()
     {
         //0に初期化
         selectedIndex = 0;
-        //
+        //UIを表示
         gameObject.SetActive(true);
 
     }
+    //UIを閉じるための関数
     public void CloseSelectionUI()
     {
         //0に初期化
         selectedIndex = 0;
-        //
+        //UIを閉じる
         gameObject.SetActive(false);
 
     }

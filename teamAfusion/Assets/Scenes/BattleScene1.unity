@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 358402309}
   - component: {fileID: 358402312}
   - component: {fileID: 358402311}
-  - component: {fileID: 358402310}
+  - component: {fileID: 358402313}
   m_Layer: 5
   m_Name: BattleDialog
   m_TagString: Untagged
@@ -752,18 +752,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 230}
   m_SizeDelta: {x: -700, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &358402310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358402308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623d6cef3f4d0a54c835a1f045ef8e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &358402311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +790,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358402308}
   m_CullTransparentMesh: 1
+--- !u!114 &358402313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358402308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ffa984bcd6ff740874b6294c9dc282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1717150701}
+  letterPerSecond: 0.1
 --- !u!1 &493192384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1655,7 @@ GameObject:
   - component: {fileID: 798257850}
   - component: {fileID: 798257854}
   m_Layer: 5
-  m_Name: BattleCanvas
+  m_Name: BattleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1759,6 +1761,7 @@ MonoBehaviour:
   attackSelectionUI: {fileID: 1812424790}
   magicSelectionUI: {fileID: 664783358}
   ultimateSelectionUI: {fileID: 1133932226}
+  battleDialog: {fileID: 358402313}
 --- !u!1 &832208615
 GameObject:
   m_ObjectHideFlags: 0
