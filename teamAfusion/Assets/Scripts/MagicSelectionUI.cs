@@ -58,19 +58,21 @@ public class MagicSelectionUI : MonoBehaviour
         }
     }
 
+    //UI‚ğ•\¦‚·‚é‚½‚ß‚ÌŠÖ”
     public void OpenSelectionUI()
     {
         //0‚É‰Šú‰»
         selectedIndex = 0;
-        //
+        //UI‚ğ•\¦
         gameObject.SetActive(true);
 
     }
+    //UI‚ğ•Â‚¶‚é‚½‚ß‚ÌŠÖ”
     public void CloseSelectionUI()
     {
         //0‚É‰Šú‰»
         selectedIndex = 0;
-        //
+        //UI‚ğ•Â‚¶‚é
         gameObject.SetActive(false);
 
     }

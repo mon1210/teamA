@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class SelectableText : MonoBehaviour
 {
-    /// <summary>
-    /// Textの色変更
-    /// 選択中なら色を黄色に
-    /// </summary>
-    Text text;
+    //テキストを取得用の変数宣言
+    private Text text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +18,12 @@ public class SelectableText : MonoBehaviour
     //指定されたテキストの色変更
     public void SetSelectedColor(bool selected)
     {
+        //選択中なら黄色
         if(selected)
         {
             text.color = Color.yellow;
         }
+        //そうでなければ白
         else
         {
             text.color = Color.white;

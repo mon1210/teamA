@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 { 
-    //
+    //アクションセレクションUIの取得
     [SerializeField] ActionSelectionUI actionSelectionUI;
-    //
+    //こうげき選択UIの取得
     [SerializeField] AttackSelectionUI attackSelectionUI;
-    //
+    //まほう選択UIの取得
     [SerializeField] MagicSelectionUI magicSelectionUI;
-    //
+    //ひっさつ選択UIの取得
     [SerializeField] UltimateSelectionUI ultimateSelectionUI;
+    //
+    [SerializeField] BattleDialog battleDialog;
 
+    //phase分けの変数宣言
     enum Phase
     {
         Start,
@@ -23,20 +26,35 @@ public class BattleSystem : MonoBehaviour
         RunTurns,
         BattleOver,
     }
-    Phase phase = Phase.Start;
+    //Phase型の変数宣言
+    Phase phase;
 
     // Start is called before the first frame update
     void Start()
     {
-        actionSelection();
+        //初期化処理
+        phase = Phase.Start;
+        //デバッグ
+        Debug.Log("バトル開始");
+
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
-        //
         attackSelectionUI.Init();
-        //
         magicSelectionUI.Init();
-        //
         ultimateSelectionUI.Init();
+
+        //
+        StartCoroutine(setupBattle());
+    }
+
+    //ダイアログのタイプが終わったらアクションセレクションへ
+    private IEnumerator setupBattle()
+    {
+        //表示しきるまで待機
+        yield return battleDialog.TypeDialog("やまれんが現れた！\nどうする？");
+        //アクションセレクションを用意する関数の呼び出し
+        actionSelection();
+
     }
 
     // Update is called once per frame
@@ -46,6 +64,7 @@ public class BattleSystem : MonoBehaviour
         processBattlePhase();
     }
 
+    //Phaseの処理分け
     private void processBattlePhase()
     {
         switch (phase)
@@ -169,6 +188,7 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
+
     //アクション選択UI表示関数
     private void actionSelection()
     {
@@ -191,16 +211,25 @@ public class BattleSystem : MonoBehaviour
     private void attackMove1()
     {
         Debug.Log("ぶんまわす");
-        runTurns();
+
+        //行動後にUIを閉じる
         attackSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
 
     }
     //二つ目のこうげき処理
     private void attackMove2()
     {
         Debug.Log("よくねらう");
-        runTurns();
+
+        //行動後にUIを閉じる
         attackSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //もどる
     private void attackBack()
@@ -210,6 +239,7 @@ public class BattleSystem : MonoBehaviour
         //
         attackSelectionUI.CloseSelectionUI();
     }
+
     /********************** まほう *************************/
     //まほう選択UI表示関数
     private void magicSelection()
@@ -223,22 +253,37 @@ public class BattleSystem : MonoBehaviour
     private void magicMove1()
     {
         Debug.Log("ほのお");
-        runTurns();
+
+        //行動後にUIを閉じる
         magicSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //二つ目のまほう処理
     private void magicMove2()
     {
         Debug.Log("こおり");
-        runTurns();
+        
+        //行動後にUIを閉じる
         magicSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //三つ目のまほう処理
     private void magicMove3()
     {
         Debug.Log("かみなり");
-        runTurns();
+
+        //行動後にUIを閉じる
         magicSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //もどる
     private void magicBack()
@@ -248,6 +293,7 @@ public class BattleSystem : MonoBehaviour
         //
         magicSelectionUI.CloseSelectionUI();
     }
+
 
     /********************** ひっさつ *************************/
     //ひっさつ選択UI表示関数
@@ -262,15 +308,25 @@ public class BattleSystem : MonoBehaviour
     private void ultimateMove1()
     {
         Debug.Log("こうていぺんぎん");
-        runTurns();
+
+        //行動後にUIを閉じる
         ultimateSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //二つ目のひっさつ処理
     private void ultimateMove2()
     {
         Debug.Log("ごっどはんど");
-        runTurns();
+
+        //行動後にUIを閉じる
         ultimateSelectionUI.CloseSelectionUI();
+
+        //ターン処理
+        runTurns();
+
     }
     //もどる
     private void ultimateBack()
@@ -284,8 +340,11 @@ public class BattleSystem : MonoBehaviour
     //
     private void runTurns()
     {
+        //phase変更
         phase = Phase.RunTurns;
+        //デバッグ用
         Debug.Log("両者の攻撃処理");
+        //アクションセレクションへ戻る
         actionSelection();
     }
 
