@@ -1,23 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class TitleButtonManager : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    public void OnClick()
     {
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1.0f;
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("SampleScene");
-        }
-    }
 }
