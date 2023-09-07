@@ -43,6 +43,7 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.Init();
         ultimateSelectionUI.Init();
 
+        actionSelectionUI.CloseSelectionUI();
         //
         StartCoroutine(setupBattle());
     }
@@ -216,7 +217,7 @@ public class BattleSystem : MonoBehaviour
         attackSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
+        StartCoroutine(runTurns());
 
     }
     //二つ目のこうげき処理
@@ -228,7 +229,7 @@ public class BattleSystem : MonoBehaviour
         attackSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
+        StartCoroutine(runTurns());
 
     }
     //もどる
@@ -258,7 +259,7 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
+        StartCoroutine(runTurns());
 
     }
     //二つ目のまほう処理
@@ -270,7 +271,7 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
+        StartCoroutine(runTurns());
 
     }
     //三つ目のまほう処理
@@ -282,7 +283,7 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
+        StartCoroutine(runTurns());
 
     }
     //もどる
@@ -313,8 +314,7 @@ public class BattleSystem : MonoBehaviour
         ultimateSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
-
+        StartCoroutine(runTurns());
     }
     //二つ目のひっさつ処理
     private void ultimateMove2()
@@ -325,8 +325,7 @@ public class BattleSystem : MonoBehaviour
         ultimateSelectionUI.CloseSelectionUI();
 
         //ターン処理
-        runTurns();
-
+        StartCoroutine(runTurns());
     }
     //もどる
     private void ultimateBack()
@@ -338,12 +337,13 @@ public class BattleSystem : MonoBehaviour
     }
 
     //
-    private void runTurns()
+    private IEnumerator runTurns()
     {
         //phase変更
         phase = Phase.RunTurns;
         //デバッグ用
-        Debug.Log("両者の攻撃処理");
+        yield return battleDialog.TypeDialog("おれのこうげき！", auto: false);
+        yield return battleDialog.TypeDialog("やまれんのこうげき！", auto: false);
         //アクションセレクションへ戻る
         actionSelection();
     }

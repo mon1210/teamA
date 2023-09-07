@@ -11,7 +11,7 @@ public class BattleDialog : MonoBehaviour
     [SerializeField] private float letterPerSecond;
 
     //0.1秒に1文字ずつ表示するようなコルーチン
-    public IEnumerator TypeDialog(string line)
+    public IEnumerator TypeDialog(string line, bool auto = true)
     {
         //テキストを空に
         text.text = "";
@@ -22,6 +22,17 @@ public class BattleDialog : MonoBehaviour
             text.text += letter;
 
             yield return new WaitForSeconds(letterPerSecond);
+
+        }
+
+        if(auto)
+        {
+            yield return new WaitForSeconds(letterPerSecond);
+
+        }
+        else
+        {
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.Space));
 
         }
     }

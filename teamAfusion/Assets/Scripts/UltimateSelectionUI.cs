@@ -13,12 +13,14 @@ public class UltimateSelectionUI : MonoBehaviour
     //selectedIndexを取得できるように
     public int SelectedIndex { get => selectedIndex; }
 
+
     //自分に含まれている子要素を取得する関数
     public void Init()
     {
         //子要素のSelectableTextを取得
         selectableTexts = GetComponentsInChildren<SelectableText>();
     }
+
 
     //選択中のテキストの色を変更する関数
     public void ChangeTextColor()

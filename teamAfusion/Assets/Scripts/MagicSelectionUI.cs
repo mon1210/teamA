@@ -7,24 +7,20 @@ public class MagicSelectionUI : MonoBehaviour
     //取得した子要素のSelectableTextの数を出す
     SelectableText[] selectableTexts;
 
-
+    //選択されている要素のインデックス
     int selectedIndex;
 
     //selectedIndexを取得できるように
     public int SelectedIndex { get => selectedIndex; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //選択中のテキストの色変更
-        //ChangeTextColor();
-    }
 
+    //自分に含まれている子要素を取得する関数
     public void Init()
     {
         //子要素のSelectableTextを取得
         selectableTexts = GetComponentsInChildren<SelectableText>();
     }
+
 
     //選択中のテキストの色を変更する関数
     public void ChangeTextColor()
