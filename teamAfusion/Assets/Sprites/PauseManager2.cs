@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PauseManager2 : MonoBehaviour
 {
     //　アイテムメニューを開くボタン
@@ -13,6 +14,9 @@ public class PauseManager2 : MonoBehaviour
     //　アイテムメニューパネル
     [SerializeField]
     private GameObject itemPanel;
+    //タイトルに戻るボタン
+   // [SerializeField]
+   // private GameObject titleButton;
 
     public void StopGame()
     {
@@ -20,6 +24,7 @@ public class PauseManager2 : MonoBehaviour
         itemButton.SetActive(false);
         reStartButton.SetActive(true);
         itemPanel.SetActive(true);
+        
     }
 
     public void ReStartGame()
@@ -27,17 +32,8 @@ public class PauseManager2 : MonoBehaviour
         itemPanel.SetActive(false);
         reStartButton.SetActive(false);
         itemButton.SetActive(true);
+      //  titleButton.SetActive(false);      
         Time.timeScale = 1f;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
