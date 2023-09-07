@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterSelection: MonoBehaviour
 { 
 
     public GameObject[] selectButton = new GameObject[7];
     public bool [] isSelect=new bool[7];
+    [SerializeField] Text text;
 
 
 
