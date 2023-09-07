@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelection: MonoBehaviour
 { 
+
     public GameObject[] selectButton = new GameObject[7];
     public bool [] isSelect=new bool[7];
 
@@ -130,18 +131,33 @@ public class CharacterSelection: MonoBehaviour
     }
     void Choice()
     {
-        if (isSelect[0] == true && isSelect[1] == true && isSelect[2] == true && isSelect[6]==true)
+        if (isSelect[0] == true && isSelect[6]==true)
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if(isSelect[3] == true && isSelect[4] == true && isSelect[5] == true && isSelect[6] == true)
+        else if (isSelect[1] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }
-        else if(isSelect[0] == true && isSelect[2] == true && isSelect[4] == true && isSelect[6] == true)
+        else if (isSelect[2] == true && isSelect[6] == true)
+        {
+            SceneManager.LoadScene("ResultScene2");
+        }
+        else if(isSelect[3] == true &&  isSelect[6] == true)
+        {
+            SceneManager.LoadScene("ResultScene2");
+        }
+        else if (isSelect[4] == true && isSelect[6] == true)
+        {
+            SceneManager.LoadScene("ResultScene2");
+        }
+        else if(isSelect[5] == true &&  isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene3");
         }
+       
+      
+        
     }
 
 }
