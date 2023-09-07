@@ -41,6 +41,7 @@ public class BattleSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ActionSelectionUI‚ð•\Ž¦
         processBattlePhase();
     }
 
