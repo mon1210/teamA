@@ -18,4 +18,12 @@ public class PlayerUnit : BattleUnit
         hpText.text=$"HP:{battler.HP}/{battler.MaxHp}";
         mpText.text=$"MP:{battler.MP}/{battler.MaxHp}";
     }
+
+    //UIÇÃçXêV
+    public override void UpdateUI()
+    {
+        //
+        hpText.text = $"HP:{Battler.HP}/{Battler.MaxHp}";
+        mpText.text = $"MP:{Battler.MP}/{Battler.MaxHp}";
+    }
 }

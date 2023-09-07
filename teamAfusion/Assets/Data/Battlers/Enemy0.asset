@@ -15,5 +15,5 @@ MonoBehaviour:
   name: "\u3084\u307E\u308C\u3093"
   maxHp: 200
   maxMp: 0
-  attack: 30
+  attack: 100
   sprite: {fileID: 0}

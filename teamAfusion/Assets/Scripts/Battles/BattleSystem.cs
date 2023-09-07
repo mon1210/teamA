@@ -18,7 +18,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit playerUnit;
     //
     [SerializeField] BattleUnit enemyUnit;
-
+    //
+    [SerializeField] GameObject fadePanel;
+    //
+    private FadeOutManager fadePanelScript;
     //phase分けの変数宣言
     enum Phase
     {
@@ -29,6 +32,7 @@ public class BattleSystem : MonoBehaviour
         UltimateSelection,
         RunTurns,
         BattleOver,
+        GameOver,
     }
     //Phase型の変数宣言
     Phase phase;
@@ -53,15 +57,19 @@ public class BattleSystem : MonoBehaviour
     }
 
     //ダイアログのタイプが終わったらアクションセレクションへ
-    private IEnumerator setupBattle(Battler player,Battler enemy)
+    private IEnumerator setupBattle(Battler player, Battler enemy)
     {
         playerUnit.Setup(player);
         enemyUnit.Setup(enemy);
         //表示しきるまで待機
-        yield return battleDialog.TypeDialog("やまれんが現れた！\nどうする？");
+        yield return battleDialog.TypeDialog($"{enemy.Base.Name}が現れた！\nどうする？");
         //アクションセレクションを用意する関数の呼び出し
         actionSelection();
 
+    }
+    void Start()
+    {
+        fadePanelScript = fadePanel.GetComponent<FadeOutManager>();
     }
 
     // Update is called once per frame
@@ -347,12 +355,46 @@ public class BattleSystem : MonoBehaviour
     {
         //phase変更
         phase = Phase.RunTurns;
-        //デバッグ用
-        yield return battleDialog.TypeDialog("おれのこうげき！", auto: false);
-        yield return battleDialog.TypeDialog("やまれんのこうげき！", auto: false);
+        //
+        yield return runMove(playerUnit, enemyUnit);
+        //
+        if(phase == Phase.BattleOver)
+        {
+            yield return battleDialog.TypeDialog($"{enemyUnit.Battler.Base.Name}をたおした！");
+            yield break;
+        }
+        //
+        yield return runMove(enemyUnit, playerUnit);
+        //
+        if (phase == Phase.BattleOver)
+        {
+            yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！");
+            phase = Phase.GameOver;
+            if (phase == Phase.GameOver)
+            {
+                fadePanelScript.FadeOut(true);
+            }
+            yield break;
+        }
+        //
+        yield return battleDialog.TypeDialog("どうする？");
         //アクションセレクションへ戻る
         actionSelection();
     }
 
+    private IEnumerator runMove(BattleUnit sourcerUnit,BattleUnit targetUnit)
+    {
+        //int型で受け取ったダメージをセット
+        int damage = targetUnit.Battler.TakeDamage(sourcerUnit.Battler);
+        //ダメージを与えた・受けたログを表示
+        yield return battleDialog.TypeDialog($"{sourcerUnit.Battler.Base.Name}のこうげき！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！", auto: false);
+        //ダメージ処理でUI更新
+        targetUnit.UpdateUI();
+        //
+        if (targetUnit.Battler.HP <= 0) 
+        {
+            phase = Phase.BattleOver;
+        }
+    }
 }
 

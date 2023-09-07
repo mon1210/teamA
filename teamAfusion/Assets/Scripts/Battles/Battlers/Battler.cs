@@ -25,4 +25,15 @@ public class Battler
         AT = _base.AT;
         MP = MaxMp;
     }
+
+    //ダメージを受ける処理
+    public int TakeDamage(Battler attacker)
+    {
+        //アタッカーの攻撃力
+        int damage = attacker.AT;
+        //HPがマイナスにならないように
+        HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+
+        return damage;
+    }
 }

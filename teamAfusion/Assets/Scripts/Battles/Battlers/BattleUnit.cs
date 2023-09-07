@@ -12,4 +12,9 @@ public class BattleUnit : MonoBehaviour
         Battler = battler;
 
     }
+
+    public virtual void UpdateUI()
+    {
+
+    }
 }
