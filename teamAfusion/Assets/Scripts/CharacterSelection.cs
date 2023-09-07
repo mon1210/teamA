@@ -9,7 +9,6 @@ public class CharacterSelection: MonoBehaviour
 { 
     public GameObject[] selectButton = new GameObject[7];
     public bool [] isSelect=new bool[7];
-    public int counter = 0;
 
 
 
@@ -21,9 +20,6 @@ public class CharacterSelection: MonoBehaviour
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
         }
-        PlayerPrefs.SetInt("Counter", 6);
-        PlayerPrefs.Save();
-
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +27,6 @@ public class CharacterSelection: MonoBehaviour
         //枠の表示切り替え
         ClickChecker();
         Choice();
-        Counter();
     }
 
     public void OnButton()
@@ -133,30 +128,19 @@ public class CharacterSelection: MonoBehaviour
             selectButton[6].SetActive(true);
         }
     }
-
-    void Counter()
-    {
-        counter = 0;
-        for (int i = 0; i < 7; i++)
-        {
-            counter++;
-
-            if (counter == 4)
-            {
-                Debug.Log("反応");
-            }
-        }
-    }
-
     void Choice()
     {
         if (isSelect[0] == true && isSelect[1] == true && isSelect[2] == true && isSelect[6]==true)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("ResultScene");
         }
         else if(isSelect[3] == true && isSelect[4] == true && isSelect[5] == true && isSelect[6] == true)
         {
-            SceneManager.LoadScene("SampleScene1");
+            SceneManager.LoadScene("ResultScene2");
+        }
+        else if(isSelect[0] == true && isSelect[2] == true && isSelect[4] == true && isSelect[6] == true)
+        {
+            SceneManager.LoadScene("ResultScene3");
         }
     }
 
