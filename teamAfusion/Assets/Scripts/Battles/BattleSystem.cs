@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleSystem : MonoBehaviour
 { 
@@ -19,9 +20,8 @@ public class BattleSystem : MonoBehaviour
     //
     [SerializeField] BattleUnit enemyUnit;
     //
-    [SerializeField] GameObject fadePanel;
-    //
-    private FadeOutManager fadePanelScript;
+    [SerializeField] Fade fade;
+
     //phase分けの変数宣言
     enum Phase
     {
@@ -66,10 +66,6 @@ public class BattleSystem : MonoBehaviour
         //アクションセレクションを用意する関数の呼び出し
         actionSelection();
 
-    }
-    void Start()
-    {
-        fadePanelScript = fadePanel.GetComponent<FadeOutManager>();
     }
 
     // Update is called once per frame
@@ -368,11 +364,11 @@ public class BattleSystem : MonoBehaviour
         //
         if (phase == Phase.BattleOver)
         {
-            yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！");
+            yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！", auto: false);
             phase = Phase.GameOver;
             if (phase == Phase.GameOver)
             {
-                fadePanelScript.FadeOut(true);
+                OnNextScene();
             }
             yield break;
         }
@@ -395,6 +391,10 @@ public class BattleSystem : MonoBehaviour
         {
             phase = Phase.BattleOver;
         }
+    }
+    private void OnNextScene()
+    {
+        fade.FadeIn(2.0f, () => SceneManager.LoadScene("TitleScene"));
     }
 }
 
