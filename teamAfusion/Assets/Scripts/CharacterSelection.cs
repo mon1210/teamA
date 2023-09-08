@@ -11,7 +11,7 @@ public class CharacterSelection: MonoBehaviour
 { 
 
     public GameObject[] selectButton = new GameObject[7];
-    public bool [] isSelect=new bool[7];
+    public bool [] isSelect = new bool[7];
     [SerializeField] Text text;
 
 
@@ -30,7 +30,9 @@ public class CharacterSelection: MonoBehaviour
     {
         //枠の表示切り替え
         ClickChecker();
-        Choice();
+        ClickButton();
+
+
     }
 
     public void OnButton()
@@ -133,7 +135,7 @@ public class CharacterSelection: MonoBehaviour
         }
     }
     //キャラクター選択結果にシーン移動する処理
-    void Choice()
+    void ClickButton()
     {
         if (isSelect[0] == true && isSelect[6]==true)
         {
@@ -158,10 +160,7 @@ public class CharacterSelection: MonoBehaviour
         else if(isSelect[5] == true &&  isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
-        }
-       
-      
-        
+        }      
     }
 
 }

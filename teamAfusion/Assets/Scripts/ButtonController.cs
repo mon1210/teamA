@@ -22,7 +22,7 @@ public class ButtonController : MonoBehaviour
         
     }
 
-    public void OnButton()
+    public void OnStartButton()
     {
         isSelect[0] =! isSelect[0];
 
