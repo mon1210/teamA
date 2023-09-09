@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackSelectionUI : MonoBehaviour
 {
+    //
+    [SerializeField] RectTransform movesParent;
     //取得した子要素のSelectableTextの数を出す
     [SerializeField] SelectableText[] selectableTexts;
 
@@ -20,6 +22,15 @@ public class AttackSelectionUI : MonoBehaviour
     {
         //子要素のSelectableTextを取得
         selectableTexts = GetComponentsInChildren<SelectableText>();
+        setUISize(3);
+    }
+
+    //技の数に合わせてUIのサイズを変える関数
+    private void setUISize(int count)
+    {
+        Vector2 uiSize = movesParent.sizeDelta;
+        uiSize.y = 50 + 90 * count;
+        movesParent.sizeDelta = uiSize;
     }
 
 
