@@ -15,9 +15,4 @@ public class GameManager : MonoBehaviour
         battleSystem.BattleStart(player.Battler, enemyBattler);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

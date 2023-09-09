@@ -16,9 +16,19 @@ public class Battler
     public int MP { get ; set; }
     public int AT { get ; set; }
 
+    //‚í‚´ƒŠƒXƒg
+    public List<Move> Moves { get; set; }
+
     //‰Šú‰»ˆ—
     public void Init()
     {
+        Moves = new List<Move>();
+        foreach (var useableMove in Base.UseableMove)
+        {
+            Moves.Add(new Move(useableMove.MoveBase));
+        }
+        Debug.Log(Moves.Count);
+
         MaxHp = _base.MaxHP;
         MaxMp = _base.MaxMP;
         HP = MaxHp;

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ActionSelectionUI : MonoBehaviour
 {
-    /// <summary>
-    /// こうげき、まほう、ひっさつを選択中かを判断、色変更
-    /// </summary>
-
     //取得した子要素のSelectableTextの数を出す
     SelectableText[] selectableTexts;
 
