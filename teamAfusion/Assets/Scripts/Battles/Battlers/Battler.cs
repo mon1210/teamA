@@ -22,28 +22,34 @@ public class Battler
     //初期化処理
     public void Init()
     {
-        Moves = new List<Move>();
-        foreach (var useableMove in Base.UseableMove)
-        {
-            Moves.Add(new Move(useableMove.MoveBase));
-        }
-        Debug.Log(Moves.Count);
-
         MaxHp = _base.MaxHP;
         MaxMp = _base.MaxMP;
         HP = MaxHp;
         AT = _base.AT;
         MP = MaxMp;
+        Moves = new List<Move>();
+        foreach (var useableMove in Base.UseableMove)
+        {
+            Moves.Add(new Move(useableMove.MoveBase));
+        }
+
     }
 
     //ダメージを受ける処理
-    public int TakeDamage(Battler attacker)
+    public int TakeDamage(Move move, Battler attacker)
     {
         //アタッカーの攻撃力
-        int damage = attacker.AT;
+        int damage = attacker.AT;// + move.Base.Power;
         //HPがマイナスにならないように
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
 
         return damage;
+    }
+
+    //ランダムに一つわざを返す関数
+    public Move GetRondomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
     }
 }

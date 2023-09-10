@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AttackSelectionUI : MonoBehaviour
 {
-    //
+    //わざリストの位置情報の取得
     [SerializeField] RectTransform movesParent;
-    //
+    //テキストPrefabの取得
     [SerializeField] SelectableText moveTextPrefab;
-    //取得した子要素のSelectableTextの数を出す
-    [SerializeField] SelectableText[] selectableTexts;
+    //子要素のSelectableTextをリスト化
+    List<SelectableText> selectableTexts = new List<SelectableText>();
 
 
     //選択されている要素のインデックス
@@ -19,11 +19,12 @@ public class AttackSelectionUI : MonoBehaviour
     public int SelectedIndex { get => selectedIndex; }
 
 
+
     //自分に含まれている子要素を取得する関数
     public void Init(List<Move> moves)
     {
-        //子要素のSelectableTextを取得
-        selectableTexts = GetComponentsInChildren<SelectableText>();
+        //子要素のSelectableTextを取得     prefab生成前に取得しようとする
+        //selectableTexts = GetComponentsInChildren<SelectableText>();
         setUISize(moves);
     }
 
@@ -35,11 +36,17 @@ public class AttackSelectionUI : MonoBehaviour
         uiSize.y = 50 + 100 * moves.Count;
         //再代入
         movesParent.sizeDelta = uiSize;
-        //リストの数分テキストprefabを生成
+
+        //リストの数分テキストprefabをループ生成
         for(int i = 0; i < moves.Count; i++)
         {
+            //わざprefabを生成
             SelectableText moveText = Instantiate(moveTextPrefab, movesParent);
+            //テキストに技名をセット
             moveText.SetMoveName(moves[i].Base.Name);
+            //selectableTextに生成したわざprefabを追加
+            selectableTexts.Add(moveText);
+
         }
     }
 
@@ -59,10 +66,10 @@ public class AttackSelectionUI : MonoBehaviour
         }
 
         //indexがテキスト数を超えないように
-        selectedIndex = Mathf.Clamp(selectedIndex, 0, selectableTexts.Length - 1);
+        selectedIndex = Mathf.Clamp(selectedIndex, 0, selectableTexts.Count - 1);
 
         //選択されているテキストの色変更
-        for (int i = 0; i < selectableTexts.Length; i++)
+        for (int i = 0; i < selectableTexts.Count; i++)
         {
             if (selectedIndex == i)
             {
