@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b02e8f2dac0a5604dbdcb08398dadf38, type: 3}
-  m_Name: Enemy0
+  m_Name: Enemy
   m_EditorClassIdentifier: 
   name: "\u3084\u307E\u308C\u3093"
   maxHp: 200
@@ -18,6 +18,6 @@ MonoBehaviour:
   attack: 25
   sprite: {fileID: 0}
   useableMove:
-  - moveBase: {fileID: 11400000, guid: 23be1b7d38567dd4b8625f61a41e7aad, type: 2}
+  - moveBase: {fileID: 11400000, guid: c44a539e1124d894db48dbf397914080, type: 2}
   - moveBase: {fileID: 11400000, guid: ed76443a4a69e4a4a97352d6bfc29903, type: 2}
   - moveBase: {fileID: 11400000, guid: 19b1fd4bafc56264e919c1769b3ed4ee, type: 2}
