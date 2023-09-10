@@ -18,5 +18,6 @@ MonoBehaviour:
   attack: 20
   sprite: {fileID: 0}
   useableMove:
-  - moveBase: {fileID: 11400000, guid: a30ecdcb4fd92b648832f128813c59e6, type: 2}
-  - moveBase: {fileID: 11400000, guid: 2716fad65011f3f42bcb0203214fe944, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0632bc28eaea08c498487f7cc1d18479, type: 2}
+  - moveBase: {fileID: 11400000, guid: d7fe8dbc9377f2d49b7742bbcb692c92, type: 2}
+  - moveBase: {fileID: 11400000, guid: ee22f111e7b030748910fa854f3705f2, type: 2}

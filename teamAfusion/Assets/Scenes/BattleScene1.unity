@@ -3003,7 +3003,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movesParent: {fileID: 761332788}
   moveTextPrefab: {fileID: 8857958565124921070, guid: dfafe3e2fb6867a4daeeea4c901e092f, type: 3}
-  selectableTexts: []
 --- !u!1 &1961420874
 GameObject:
   m_ObjectHideFlags: 0
