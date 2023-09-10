@@ -11,6 +11,7 @@ public class BattlerBase : ScriptableObject
     [SerializeField] int maxMp;
     [SerializeField] int attack;
     [SerializeField] Sprite sprite;
+    [SerializeField] List<UseableMove> useableMove;
 
     //•Êƒtƒ@ƒCƒ‹‚©‚çŽæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name;}
@@ -18,4 +19,5 @@ public class BattlerBase : ScriptableObject
     public int AT { get => attack;}
     public Sprite Sprite { get => sprite;}
     public int MaxMP { get => maxMp;}
+    public List<UseableMove> UseableMove { get => useableMove; }
 }

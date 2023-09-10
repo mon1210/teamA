@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AttackSelectionUI : MonoBehaviour
 {
+    //
+    [SerializeField] RectTransform movesParent;
+    //
+    [SerializeField] SelectableText moveTextPrefab;
     //取得した子要素のSelectableTextの数を出す
     [SerializeField] SelectableText[] selectableTexts;
 
@@ -16,10 +20,27 @@ public class AttackSelectionUI : MonoBehaviour
 
 
     //自分に含まれている子要素を取得する関数
-    public void Init()
+    public void Init(List<Move> moves)
     {
         //子要素のSelectableTextを取得
         selectableTexts = GetComponentsInChildren<SelectableText>();
+        setUISize(moves);
+    }
+
+    //技の数に合わせてUIのサイズを変える関数
+    private void setUISize(List<Move> moves)
+    {
+        Vector2 uiSize = movesParent.sizeDelta;
+        //UIのサイズをy方向(下)に50+100*技の数分伸ばす
+        uiSize.y = 50 + 100 * moves.Count;
+        //再代入
+        movesParent.sizeDelta = uiSize;
+        //リストの数分テキストprefabを生成
+        for(int i = 0; i < moves.Count; i++)
+        {
+            SelectableText moveText = Instantiate(moveTextPrefab, movesParent);
+            moveText.SetMoveName(moves[i].Base.Name);
+        }
     }
 
 

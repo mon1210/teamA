@@ -29,4 +29,17 @@ public class SelectableText : MonoBehaviour
             text.color = Color.white;
         }
     }
+
+    //引数の名前をテキストに代入
+    public void SetMoveName(string newName)
+    {
+        //StartよりInstantiateのほうが早く実行されるのでこれがないとNULLReferenceになる
+        if (text == null) 
+        {
+            text = GetComponent<Text>();
+        }
+
+        text.text = newName;
+    }
+
 }

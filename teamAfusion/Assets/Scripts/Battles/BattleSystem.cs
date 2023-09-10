@@ -47,7 +47,7 @@ public class BattleSystem : MonoBehaviour
 
         //q—v‘f‚ÌSelectableText‚ğæ“¾‚·‚éŠÖ”‚ÌŒÄ‚Ño‚µ
         actionSelectionUI.Init();
-        attackSelectionUI.Init();
+        attackSelectionUI.Init(player.Moves);
         magicSelectionUI.Init();
         ultimateSelectionUI.Init();
 
