@@ -19,6 +19,7 @@ public class AttackSelectionUI : MonoBehaviour
     public int SelectedIndex { get => selectedIndex; }
 
 
+
     //©•ª‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚éq—v‘f‚ğæ“¾‚·‚éŠÖ”
     public void Init(List<Move> moves)
     {
