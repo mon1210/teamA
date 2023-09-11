@@ -5,13 +5,14 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class CharacterSelection: MonoBehaviour
-{ 
-
-    public GameObject[] selectButton = new GameObject[7];
-    public bool [] isSelect = new bool[7];
+{
+    //選択ボタンの取得
+    [SerializeField] GameObject[] selectButton = new GameObject[7];
+    //選択状態取得
+    [SerializeField] bool [] isSelect = new bool[7];
+    //テキスト取得
     [SerializeField] Text text;
 
 
@@ -29,10 +30,8 @@ public class CharacterSelection: MonoBehaviour
     void Update()
     {
         //枠の表示切り替え
-        ClickChecker();
-        ClickButton();
-
-
+        clickChecker();
+        clickButton();
     }
 
     public void OnButton()
@@ -73,7 +72,7 @@ public class CharacterSelection: MonoBehaviour
     }
 
 
-    void ClickChecker()
+    private void clickChecker()
     {
         //選択されていなければ枠を非表示する
         if (isSelect[0] == false)
@@ -85,6 +84,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[0].SetActive(true);
         }
+
         if (isSelect[1] == false)
         {
             selectButton[1].SetActive(false);
@@ -93,6 +93,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[1].SetActive(true);
         }
+
         if (isSelect[2] == false)
         {
             selectButton[2].SetActive(false);
@@ -101,6 +102,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[2].SetActive(true);
         }
+
         if (isSelect[3] == false)
         {
             selectButton[3].SetActive(false);
@@ -109,6 +111,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[3].SetActive(true);
         }
+
         if (isSelect[4] == false)
         {
             selectButton[4].SetActive(false);
@@ -117,6 +120,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[4].SetActive(true);
         }
+
         if (isSelect[5] == false)
         {
             selectButton[5].SetActive(false);
@@ -125,6 +129,7 @@ public class CharacterSelection: MonoBehaviour
         {
             selectButton[5].SetActive(true);
         }
+
         if (isSelect[6] == false)
         {
             selectButton[6].SetActive(false);
@@ -135,7 +140,7 @@ public class CharacterSelection: MonoBehaviour
         }
     }
     //キャラクター選択結果にシーン移動する処理
-    void ClickButton()
+     private void clickButton()
     {
         if (isSelect[0] == true && isSelect[6]==true)
         {
@@ -149,7 +154,7 @@ public class CharacterSelection: MonoBehaviour
         {
             SceneManager.LoadScene("ResultScene3");
         }
-        else if(isSelect[3] == true &&  isSelect[6] == true)
+        else if (isSelect[3] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene4");
         }
@@ -157,7 +162,7 @@ public class CharacterSelection: MonoBehaviour
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if(isSelect[5] == true &&  isSelect[6] == true)
+        else if (isSelect[5] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }      
