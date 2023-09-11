@@ -35,7 +35,7 @@ public class Battler
 
     }
 
-    //ダメージを受ける処理
+    //「こうげき」行動のダメージ処理
     public int TakeDamage(int movePower, Battler attacker)
     {
         //アタッカーの攻撃力
@@ -44,6 +44,12 @@ public class Battler
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
 
         return damage;
+    }
+    //「回復」行動の処理
+    public void Heal(int healPoint)
+    {
+        //HPがマイナスにならないように
+        HP = Mathf.Clamp(HP + healPoint, 0, MaxHp);
     }
 
     //ランダムに一つわざを返す関数
