@@ -75,7 +75,7 @@ public class CharacterSelection: MonoBehaviour
     private void clickChecker()
     {
         //‘I‘ð‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î˜g‚ð”ñ•\Ž¦‚·‚é
-        if (isSelect[0])
+        if (isSelect[0] == false)
         {
             selectButton[0].SetActive(false);
         }
@@ -85,7 +85,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[0].SetActive(true);
         }
 
-        if (isSelect[1])
+        if (isSelect[1] == false)
         {
             selectButton[1].SetActive(false);
         }
@@ -94,7 +94,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[1].SetActive(true);
         }
 
-        if (isSelect[2])
+        if (isSelect[2] == false)
         {
             selectButton[2].SetActive(false);
         }
@@ -103,7 +103,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[2].SetActive(true);
         }
 
-        if (isSelect[3])
+        if (isSelect[3] == false)
         {
             selectButton[3].SetActive(false);
         }
@@ -112,7 +112,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[3].SetActive(true);
         }
 
-        if (isSelect[4])
+        if (isSelect[4] == false)
         {
             selectButton[4].SetActive(false);
         }
@@ -121,7 +121,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[4].SetActive(true);
         }
 
-        if (isSelect[5])
+        if (isSelect[5] == false)
         {
             selectButton[5].SetActive(false);
         }
@@ -130,7 +130,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[5].SetActive(true);
         }
 
-        if (isSelect[6])
+        if (isSelect[6] == false)
         {
             selectButton[6].SetActive(false);
         }
