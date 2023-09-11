@@ -14,15 +14,13 @@ public class ButtonController : MonoBehaviour
     //テキスト取得
     [SerializeField] Text text;
 
-    void Start()
-    {
-        onStartButton();
-    }
     //スタートボタンの関数
-    private void onStartButton()
+    public void OnStartButton()
     {
-        isSelect[0] =! isSelect[0];
+        isSelect[0] = !isSelect[0];
 
         SceneManager.LoadScene("ChoiceScene");
     }
+
+
 }

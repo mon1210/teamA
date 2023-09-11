@@ -32,8 +32,6 @@ public class CharacterSelection: MonoBehaviour
         //枠の表示切り替え
         clickChecker();
         clickButton();
-
-
     }
 
     public void OnButton()
@@ -144,27 +142,27 @@ public class CharacterSelection: MonoBehaviour
     //キャラクター選択結果にシーン移動する処理
      private void clickButton()
     {
-        if (!isSelect[0]  && !isSelect[6])
+        if (isSelect[0] == true && isSelect[6]==true)
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if (!isSelect[1] && !isSelect[6])
+        else if (isSelect[1] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }
-        else if (!isSelect[2] && !isSelect[6])
+        else if (isSelect[2] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene3");
         }
-        else if(!isSelect[3] && !isSelect[6])
+        else if (isSelect[3] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene4");
         }
-        else if (!isSelect[4] && !isSelect[6])
+        else if (isSelect[4] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if(!isSelect[5] && !isSelect[6])
+        else if (isSelect[5] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }      
