@@ -21,4 +21,3 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: 0632bc28eaea08c498487f7cc1d18479, type: 2}
   - moveBase: {fileID: 11400000, guid: d7fe8dbc9377f2d49b7742bbcb692c92, type: 2}
   - moveBase: {fileID: 11400000, guid: ee22f111e7b030748910fa854f3705f2, type: 2}
-  - moveBase: {fileID: 11400000, guid: 175d3d748f0ae0e4090e72bfd1c8679f, type: 2}
