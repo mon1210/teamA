@@ -15,24 +15,30 @@ public class PauseManager2 : MonoBehaviour
     [SerializeField]
     private GameObject itemPanel;
     //タイトルに戻るボタン
-   // [SerializeField]
-   // private GameObject titleButton;
+   
 
-    public void StopGame()
+    public void stopGame()
     {
+        //時間停止
         Time.timeScale = 0f;
+        //itemButton非表示
         itemButton.SetActive(false);
+        //reStartButton表示
         reStartButton.SetActive(true);
+        //itemPanel表示
         itemPanel.SetActive(true);
         
     }
 
-    public void ReStartGame()
+    public void reStartGame()
     {
+        //itemPanel非表示
         itemPanel.SetActive(false);
+        //reStartButton非表示
         reStartButton.SetActive(false);
+        //itemButton表示
         itemButton.SetActive(true);
-      //  titleButton.SetActive(false);      
+        //時は動き出す
         Time.timeScale = 1f;
     }
     

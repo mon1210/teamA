@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class TextFadeInOutController : MonoBehaviour
 {
-
+    //Textをフェードインさせる
     [SerializeField]
     [Tooltip("フェードさせる時間(秒)")]
-    private float fadeTime = 1f;
+    private float fadeTime;
     //経過時間を取得
     private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
