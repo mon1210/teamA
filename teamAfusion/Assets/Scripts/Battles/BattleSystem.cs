@@ -356,10 +356,10 @@ public class BattleSystem : MonoBehaviour
     //お互いの技によるダイアログ
     private IEnumerator runMove(Move move, BattleUnit sourcerUnit, BattleUnit targetUnit)
     {
-        //int型で受け取ったダメージをセット
-        int damage = targetUnit.Battler.TakeDamage(move, sourcerUnit.Battler);
-        //ダメージを与えた・受けたログを表示
-        yield return battleDialog.TypeDialog($"{sourcerUnit.Battler.Base.Name}の{move.Base.Name}！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！", auto: false);
+        //受け取った行動のテキストを代入
+        string resultText = move.Base.RunMoveResult(sourcerUnit, targetUnit);
+        //行動のテキストを表示
+        yield return battleDialog.TypeDialog(resultText, auto: false);
         //ダメージ処理でUI更新
         targetUnit.UpdateUI();
         //被ダメージ者がHP0以下でPhase切り替え

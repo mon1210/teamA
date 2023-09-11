@@ -36,10 +36,10 @@ public class Battler
     }
 
     //ダメージを受ける処理
-    public int TakeDamage(Move move, Battler attacker)
+    public int TakeDamage(int movePower, Battler attacker)
     {
         //アタッカーの攻撃力
-        int damage = attacker.AT;// + move.Base.Power;
+        int damage = attacker.AT + movePower;
         //HPがマイナスにならないように
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
 
