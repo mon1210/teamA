@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class TitleButtonManager : MonoBehaviour
 {
     //ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çTitleScene‚ÉˆÚ“®
-    public void onClick()
+    public void OnClick()
     {
         SceneManager.LoadScene("TitleScene");
-        
+
     }
 
 }
