@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Battler Battler { get => battler;}
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         battler.Init();
     }

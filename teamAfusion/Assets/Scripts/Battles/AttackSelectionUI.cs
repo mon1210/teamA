@@ -33,7 +33,7 @@ public class AttackSelectionUI : MonoBehaviour
     {
         Vector2 uiSize = movesParent.sizeDelta;
         //UI‚ÌƒTƒCƒY‚ğy•ûŒü(‰º)‚É50+100*‹Z‚Ì”•ªL‚Î‚·
-        uiSize.y = 50 + 100 * moves.Count;
+        uiSize.y = Const.BaseIncrement + Const.MovesMultiplier * moves.Count;
         //Ä‘ã“ü
         movesParent.sizeDelta = uiSize;
 

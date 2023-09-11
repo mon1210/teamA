@@ -146,22 +146,7 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (magicSelectionUI.SelectedIndex == 0)
-            {
-                magicMove1();
-            }
-            else if (magicSelectionUI.SelectedIndex == 1)
-            {
-                magicMove2();
-            }
-            else if(magicSelectionUI.SelectedIndex==2)
-            {
-                magicMove3();
-            }
-            else
-            {
-                magicBack();
-            }
+            magicMove();
         }
 
     }
@@ -174,18 +159,7 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (ultimateSelectionUI.SelectedIndex == 0)
-            {
-                ultimateMove1();
-            }
-            else if (ultimateSelectionUI.SelectedIndex == 1)
-            {
-                ultimateMove2();
-            }
-            else
-            {
-                ultimateBack();
-            }
+            ultimateMove();
         }
 
     }
@@ -228,39 +202,12 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.OpenSelectionUI();
     }
     //一つ目のまほう処理
-    private void magicMove1()
+    private void magicMove()
     {
-        Debug.Log("ほのお");
-
-        //行動後にUIを閉じる
-        magicSelectionUI.CloseSelectionUI();
-
         //ターン処理
         StartCoroutine(runTurns());
-
-    }
-    //二つ目のまほう処理
-    private void magicMove2()
-    {
-        Debug.Log("こおり");
-        
         //行動後にUIを閉じる
         magicSelectionUI.CloseSelectionUI();
-
-        //ターン処理
-        StartCoroutine(runTurns());
-
-    }
-    //三つ目のまほう処理
-    private void magicMove3()
-    {
-        Debug.Log("かみなり");
-
-        //行動後にUIを閉じる
-        magicSelectionUI.CloseSelectionUI();
-
-        //ターン処理
-        StartCoroutine(runTurns());
 
     }
     //もどる
@@ -283,26 +230,13 @@ public class BattleSystem : MonoBehaviour
         ultimateSelectionUI.OpenSelectionUI();
     }
     //一つ目のひっさつ処理
-    private void ultimateMove1()
-    {
-        Debug.Log("こうていぺんぎん");
+    private void ultimateMove()
+    {   
+        //ターン処理
+        StartCoroutine(runTurns());
 
         //行動後にUIを閉じる
         ultimateSelectionUI.CloseSelectionUI();
-
-        //ターン処理
-        StartCoroutine(runTurns());
-    }
-    //二つ目のひっさつ処理
-    private void ultimateMove2()
-    {
-        Debug.Log("ごっどはんど");
-
-        //行動後にUIを閉じる
-        ultimateSelectionUI.CloseSelectionUI();
-
-        //ターン処理
-        StartCoroutine(runTurns());
     }
     //もどる
     private void ultimateBack()
@@ -342,7 +276,7 @@ public class BattleSystem : MonoBehaviour
             phase = Phase.GameOver;
             if (phase == Phase.GameOver)
             {
-                OnNextScene();
+                onNextScene();
             }
             yield break;
         }
@@ -371,7 +305,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
     //2秒かけてフェードアウトしてシーン切り替え
-    private void OnNextScene()
+    private void onNextScene()
     {
         fade.FadeIn(2.0f, () => SceneManager.LoadScene("GameOverScene"));
     }
