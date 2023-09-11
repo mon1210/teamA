@@ -19,7 +19,7 @@ public class ChoiceButtonController : MonoBehaviour
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("BattleScene1");
+        SceneManager.LoadScene("BattleScene1-1");
     }
 
 
