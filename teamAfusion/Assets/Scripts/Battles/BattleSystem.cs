@@ -15,11 +15,11 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] UltimateSelectionUI ultimateSelectionUI;
     //ダイアログの取得
     [SerializeField] BattleDialog battleDialog;
-    //
+    //player情報の取得
     [SerializeField] BattleUnit playerUnit;
-    //
+    //enemy情報の取得
     [SerializeField] BattleUnit enemyUnit;
-    //
+    //fadeに必要な素材の取得
     [SerializeField] Fade fade;
 
     //phase分けの変数宣言
@@ -37,7 +37,7 @@ public class BattleSystem : MonoBehaviour
     //Phase型の変数宣言
     Phase phase;
 
-    // Start is called before the first frame update
+    //バトル開始時処理
     public void BattleStart(Battler player, Battler enemy)
     {
         //初期化処理
@@ -52,13 +52,14 @@ public class BattleSystem : MonoBehaviour
         ultimateSelectionUI.Init();
 
         actionSelectionUI.CloseSelectionUI();
-        //
+        //バトル前のSetUp
         StartCoroutine(setupBattle(player, enemy));
     }
 
     //ダイアログのタイプが終わったらアクションセレクションへ
     private IEnumerator setupBattle(Battler player, Battler enemy)
     {
+        //Unitに基本情報をセット
         playerUnit.Setup(player);
         enemyUnit.Setup(enemy);
         //表示しきるまで待機
@@ -133,18 +134,7 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (attackSelectionUI.SelectedIndex == 0)
-            {
-                attackMove1();
-            }
-            else if (attackSelectionUI.SelectedIndex == 1)
-            {
-                attackMove2();
-            }
-            else
-            {
-                attackBack();
-            }
+            attackMove();
         }
     }
     //まほう選択関数
@@ -218,37 +208,14 @@ public class BattleSystem : MonoBehaviour
         //
         attackSelectionUI.OpenSelectionUI();
     }
-    //一つ目のこうげき処理
-    private void attackMove1()
+    //こうげき処理
+    private void attackMove()
     {
-        Debug.Log("ぶんまわす");
-
-        //行動後にUIを閉じる
-        attackSelectionUI.CloseSelectionUI();
-
         //ターン処理
         StartCoroutine(runTurns());
 
-    }
-    //二つ目のこうげき処理
-    private void attackMove2()
-    {
-        Debug.Log("よくねらう");
-
         //行動後にUIを閉じる
-        attackSelectionUI.CloseSelectionUI();
-
-        //ターン処理
-        StartCoroutine(runTurns());
-
-    }
-    //もどる
-    private void attackBack()
-    {
-        //
-        phase = Phase.ActionSelection;
-        //
-        attackSelectionUI.CloseSelectionUI();
+        attackSelectionUI.CloseSelectionUI(); 
     }
 
     /********************** まほう *************************/
@@ -346,22 +313,29 @@ public class BattleSystem : MonoBehaviour
         ultimateSelectionUI.CloseSelectionUI();
     }
 
-    //
+
+    //お互いの技が発生する「1ターン」の動き
     private IEnumerator runTurns()
     {
         //phase変更
         phase = Phase.RunTurns;
-        //
-        yield return runMove(playerUnit, enemyUnit);
-        //
+
+        //plyermoveにわざ(選択中のIndex)を代入
+        Move playerMove = playerUnit.Battler.Moves[attackSelectionUI.SelectedIndex];
+        //自分の攻撃
+        yield return runMove(playerMove,playerUnit, enemyUnit);
+        //勝利処理
         if(phase == Phase.BattleOver)
         {
             yield return battleDialog.TypeDialog($"{enemyUnit.Battler.Base.Name}をたおした！");
             yield break;
         }
-        //
-        yield return runMove(enemyUnit, playerUnit);
-        //
+
+        //enemymoveにランダムに一つわざを代入
+        Move enemyMove = enemyUnit.Battler.GetRondomMove();
+        //敵の攻撃
+        yield return runMove(enemyMove,enemyUnit, playerUnit);
+        //敗北処理
         if (phase == Phase.BattleOver)
         {
             yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！", auto: false);
@@ -372,26 +346,29 @@ public class BattleSystem : MonoBehaviour
             }
             yield break;
         }
-        //
+
+        //ターン終了時ダイアログ
         yield return battleDialog.TypeDialog("どうする？");
         //アクションセレクションへ戻る
         actionSelection();
     }
 
-    private IEnumerator runMove(BattleUnit sourcerUnit,BattleUnit targetUnit)
+    //お互いの技によるダイアログ
+    private IEnumerator runMove(Move move, BattleUnit sourcerUnit, BattleUnit targetUnit)
     {
         //int型で受け取ったダメージをセット
-        int damage = targetUnit.Battler.TakeDamage(sourcerUnit.Battler);
+        int damage = targetUnit.Battler.TakeDamage(move, sourcerUnit.Battler);
         //ダメージを与えた・受けたログを表示
-        yield return battleDialog.TypeDialog($"{sourcerUnit.Battler.Base.Name}のこうげき！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！", auto: false);
+        yield return battleDialog.TypeDialog($"{sourcerUnit.Battler.Base.Name}の{move.Base.Name}！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！", auto: false);
         //ダメージ処理でUI更新
         targetUnit.UpdateUI();
-        //
+        //被ダメージ者がHP0以下でPhase切り替え
         if (targetUnit.Battler.HP <= 0) 
         {
             phase = Phase.BattleOver;
         }
     }
+    //2秒かけてフェードアウトしてシーン切り替え
     private void OnNextScene()
     {
         fade.FadeIn(2.0f, () => SceneManager.LoadScene("TitleScene"));

@@ -14,9 +14,4 @@ public class PlayerController : MonoBehaviour
         battler.Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

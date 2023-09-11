@@ -7,9 +7,6 @@ using UnityEngine;
 public class MoveBase : ScriptableObject
 {
     [SerializeField] new string name;
-    [SerializeField] int power;
-
     //ŠO•”‚ÅŽæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name; }
-    public int Power { get => power; }
 }
