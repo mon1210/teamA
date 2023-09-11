@@ -176,7 +176,7 @@ MonoBehaviour:
   - {fileID: 1779444049}
   - {fileID: 174247196}
   isSelect: 00000000000000
-  text: {fileID: 0}
+  text: {fileID: 1927561077}
 --- !u!1 &144527447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 88930309}
           m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
-          m_MethodName: OnButton2
+          m_MethodName: OnButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

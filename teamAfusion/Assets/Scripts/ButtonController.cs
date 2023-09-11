@@ -7,22 +7,19 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    public GameObject[] Button = new GameObject[1];
-    public bool[] isSelect = new bool[1];
+    //選択ボタンの取得
+    [SerializeField] GameObject[] Button = new GameObject[1];
+    //選択状態取得
+    [SerializeField] bool[] isSelect = new bool[1];
+    //テキスト取得
     [SerializeField] Text text;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        onStartButton();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnStartButton()
+    //スタートボタンの関数
+    private void onStartButton()
     {
         isSelect[0] =! isSelect[0];
 
