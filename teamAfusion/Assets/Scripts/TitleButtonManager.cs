@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class TitleButtonManager : MonoBehaviour
 {
+    //ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çTitleScene‚ÉˆÚ“®
     public void OnClick()
     {
-        SceneManager.LoadScene("ChoiceScene");
-        
-        
+        SceneManager.LoadScene("TitleScene");
+
     }
 
 }
