@@ -32,8 +32,6 @@ public class CharacterSelection: MonoBehaviour
         //枠の表示切り替え
         clickChecker();
         clickButton();
-
-
     }
 
     public void OnButton()
@@ -77,7 +75,7 @@ public class CharacterSelection: MonoBehaviour
     private void clickChecker()
     {
         //選択されていなければ枠を非表示する
-        if (isSelect[0])
+        if (isSelect[0] == false)
         {
             selectButton[0].SetActive(false);
         }
@@ -87,7 +85,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[0].SetActive(true);
         }
 
-        if (isSelect[1])
+        if (isSelect[1] == false)
         {
             selectButton[1].SetActive(false);
         }
@@ -96,7 +94,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[1].SetActive(true);
         }
 
-        if (isSelect[2])
+        if (isSelect[2] == false)
         {
             selectButton[2].SetActive(false);
         }
@@ -105,7 +103,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[2].SetActive(true);
         }
 
-        if (isSelect[3])
+        if (isSelect[3] == false)
         {
             selectButton[3].SetActive(false);
         }
@@ -114,7 +112,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[3].SetActive(true);
         }
 
-        if (isSelect[4])
+        if (isSelect[4] == false)
         {
             selectButton[4].SetActive(false);
         }
@@ -123,7 +121,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[4].SetActive(true);
         }
 
-        if (isSelect[5])
+        if (isSelect[5] == false)
         {
             selectButton[5].SetActive(false);
         }
@@ -132,7 +130,7 @@ public class CharacterSelection: MonoBehaviour
             selectButton[5].SetActive(true);
         }
 
-        if (isSelect[6])
+        if (isSelect[6] == false)
         {
             selectButton[6].SetActive(false);
         }
@@ -144,27 +142,27 @@ public class CharacterSelection: MonoBehaviour
     //キャラクター選択結果にシーン移動する処理
      private void clickButton()
     {
-        if (!isSelect[0]  && !isSelect[6])
+        if (isSelect[0] == true && isSelect[6]==true)
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if (!isSelect[1] && !isSelect[6])
+        else if (isSelect[1] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }
-        else if (!isSelect[2] && !isSelect[6])
+        else if (isSelect[2] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene3");
         }
-        else if(!isSelect[3] && !isSelect[6])
+        else if (isSelect[3] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene4");
         }
-        else if (!isSelect[4] && !isSelect[6])
+        else if (isSelect[4] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene");
         }
-        else if(!isSelect[5] && !isSelect[6])
+        else if (isSelect[5] == true && isSelect[6] == true)
         {
             SceneManager.LoadScene("ResultScene2");
         }      
