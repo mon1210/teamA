@@ -7,9 +7,16 @@ using UnityEngine.UI;
 
 public class TitleButtonController : MonoBehaviour
 {
+
+
     //選択状態取得
     [SerializeField] bool[] isSelect = new bool[1];
 
+
+    private void Start()
+    {
+        Debug.Log("タイトル");
+    }
     //スタートボタンの関数
     public void OnStartButton()
     {
@@ -17,7 +24,6 @@ public class TitleButtonController : MonoBehaviour
 
         SceneManager.LoadScene("ChoiceScene");
 
-         if()
     }
 
 
