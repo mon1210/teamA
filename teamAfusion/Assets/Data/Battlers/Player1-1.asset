@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02e8f2dac0a5604dbdcb08398dadf38, type: 3}
+  m_Name: Player1-1
+  m_EditorClassIdentifier: 
+  name: "\u304B\u308F\u3070\u305F"
+  maxHp: 100
+  maxMp: 100
+  attack: 20
+  sprite: {fileID: 0}
+  useableMove:
+  - moveBase: {fileID: 11400000, guid: 0632bc28eaea08c498487f7cc1d18479, type: 2}
+  - moveBase: {fileID: 11400000, guid: d7fe8dbc9377f2d49b7742bbcb692c92, type: 2}
+  - moveBase: {fileID: 11400000, guid: ee22f111e7b030748910fa854f3705f2, type: 2}
+  - moveBase: {fileID: 11400000, guid: 175d3d748f0ae0e4090e72bfd1c8679f, type: 2}
