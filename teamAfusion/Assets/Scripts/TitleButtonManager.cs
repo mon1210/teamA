@@ -9,8 +9,8 @@ public class TitleButtonManager : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("SampleScene");
-        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("ChoiceScene");
+        
         
     }
 
