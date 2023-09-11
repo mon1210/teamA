@@ -16,8 +16,6 @@ public class TitleButtonController : MonoBehaviour
         isSelect[0] = !isSelect[0];
 
         SceneManager.LoadScene("ChoiceScene");
-
-         if()
     }
 
 
