@@ -9,4 +9,10 @@ public class MoveBase : ScriptableObject
     [SerializeField] new string name;
     //ŠO•”‚Åæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name; }
+
+    //‰¼‘zŠÖ”éŒ¾
+    public virtual string RunMoveResult(BattleUnit sourcerUnit, BattleUnit targetUnit)
+    {
+        return "";
+    }
 }

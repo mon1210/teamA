@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
         attackSelectionUI.Init(player.Moves);
-        magicSelectionUI.Init();
+        //magicSelectionUI.Init();
         ultimateSelectionUI.Init();
 
         actionSelectionUI.CloseSelectionUI();
@@ -354,14 +354,16 @@ public class BattleSystem : MonoBehaviour
     }
 
     //お互いの技によるダイアログ
-    private IEnumerator runMove(Move move, BattleUnit sourcerUnit, BattleUnit targetUnit)
+    private IEnumerator runMove(Move move, BattleUnit sourceUnit, BattleUnit targetUnit)
     {
-        //int型で受け取ったダメージをセット
-        int damage = targetUnit.Battler.TakeDamage(move, sourcerUnit.Battler);
-        //ダメージを与えた・受けたログを表示
-        yield return battleDialog.TypeDialog($"{sourcerUnit.Battler.Base.Name}の{move.Base.Name}！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！", auto: false);
-        //ダメージ処理でUI更新
+        //受け取った行動のテキストを代入
+        string resultText = move.Base.RunMoveResult(sourceUnit, targetUnit);
+        //行動のテキストを表示
+        yield return battleDialog.TypeDialog(resultText, auto: false);
+        //被ダメージ処理によるUI更新
         targetUnit.UpdateUI();
+        //技使用者のUI更新(HP回復時に使用)
+        sourceUnit.UpdateUI();
         //被ダメージ者がHP0以下でPhase切り替え
         if (targetUnit.Battler.HP <= 0) 
         {
@@ -371,7 +373,7 @@ public class BattleSystem : MonoBehaviour
     //2秒かけてフェードアウトしてシーン切り替え
     private void OnNextScene()
     {
-        fade.FadeIn(2.0f, () => SceneManager.LoadScene("TitleScene"));
+        fade.FadeIn(2.0f, () => SceneManager.LoadScene("GameOverScene"));
     }
 }
 
