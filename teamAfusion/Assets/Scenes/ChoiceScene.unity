@@ -177,6 +177,8 @@ MonoBehaviour:
   - {fileID: 174247196}
   isSelect: 00000000000000
   text: {fileID: 1927561077}
+  sceneName:
+  - ResultScene
 --- !u!1 &144527447
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,4 +15,16 @@ public class DisplayController : MonoBehaviour
 
         SceneManager.LoadScene("BattleScene1-1");
     }
+    public void OnDisplayButton02()
+    {
+        isSelect[0] = !isSelect[0];
+
+        SceneManager.LoadScene("BattleScene1-2");
+    }
+    public void OnDisplayButton03()
+    {
+        isSelect[0] = !isSelect[0];
+
+        SceneManager.LoadScene("BattleScene1-3");
+    }
 }
