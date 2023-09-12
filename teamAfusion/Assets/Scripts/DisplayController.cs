@@ -19,12 +19,12 @@ public class DisplayController : MonoBehaviour
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("LastBattleeScene");
+        SceneManager.LoadScene("SecondBattleSceneLastBattleeScene");
     }
     public void OnDisplayButton03()
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("SecondBattleScene");
+        SceneManager.LoadScene("LastBattleeScene");
     }
 }
