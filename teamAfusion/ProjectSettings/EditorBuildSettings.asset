@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BoosDisplayScene.unity
     guid: 91cfdd61826305b4ab079842d6f0349a
   - enabled: 1
-    path: Assets/Scenes/BattleScene1-1.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/FirstBattleScene.unity
     guid: dbeb1ef188bcbc148b8d3417ef15579f
   - enabled: 1
     path: Assets/Scenes/BoosDisplayScene 1.unity
