@@ -21,6 +21,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     //fadeに必要な素材の取得
     [SerializeField] Fade fade;
+    //
+    [SerializeField] private string nextSceneName;
+    //
+    [SerializeField] private string gameoverScene;
 
     //phase分けの変数宣言
     enum Phase
@@ -47,8 +51,8 @@ public class BattleSystem : MonoBehaviour
 
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
-        attackSelectionUI.Init(player.Moves);
-        //magicSelectionUI.Init();
+        attackSelectionUI.Init(player.AttackMoves);
+        //magicSelectionUI.Init(player.MagicMoves);
         ultimateSelectionUI.Init();
 
         actionSelectionUI.CloseSelectionUI();
@@ -255,13 +259,14 @@ public class BattleSystem : MonoBehaviour
         phase = Phase.RunTurns;
 
         //plyermoveにわざ(選択中のIndex)を代入
-        Move playerMove = playerUnit.Battler.Moves[attackSelectionUI.SelectedIndex];
+        Move playerMove = playerUnit.Battler.AttackMoves[attackSelectionUI.SelectedIndex];
         //自分の攻撃
         yield return runMove(playerMove,playerUnit, enemyUnit);
         //勝利処理
         if(phase == Phase.BattleOver)
         {
             yield return battleDialog.TypeDialog($"{enemyUnit.Battler.Base.Name}をたおした！");
+            onNextScene(nextSceneName);
             yield break;
         }
 
@@ -276,7 +281,7 @@ public class BattleSystem : MonoBehaviour
             phase = Phase.GameOver;
             if (phase == Phase.GameOver)
             {
-                onNextScene();
+                onNextScene(gameoverScene);
             }
             yield break;
         }
@@ -305,9 +310,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
     //2秒かけてフェードアウトしてシーン切り替え
-    private void onNextScene()
+    private void onNextScene(string sceneName)
     {
-        fade.FadeIn(2.0f, () => SceneManager.LoadScene("GameOverScene"));
+        fade.FadeIn(2.0f, () => SceneManager.LoadScene(sceneName));
     }
 }
 

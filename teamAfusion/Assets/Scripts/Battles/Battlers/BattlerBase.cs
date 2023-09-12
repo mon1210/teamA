@@ -13,6 +13,13 @@ public class BattlerBase : ScriptableObject
     [SerializeField] Sprite sprite;
     [SerializeField] List<UseableMove> useableMove;
 
+    public enum State
+    {
+        Attack = 0,
+        Magic = 1,
+    }
+    public State state = State.Attack;
+
     //•Êƒtƒ@ƒCƒ‹‚©‚çŽæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name;}
     public int MaxHP { get => maxHp;}
