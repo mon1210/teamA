@@ -9,14 +9,7 @@ public class MoveBase : ScriptableObject
     [SerializeField] new string name;
     //ŠO•”‚Åæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name; }
-    public State State1 { get => state1;}
 
-    public enum State
-    {
-        Attack = 0,
-        Magic = 1,
-    }
-    private State state1;
     //‰¼‘zŠÖ”éŒ¾
     public virtual string RunMoveResult(BattleUnit sourcerUnit, BattleUnit targetUnit)
     {
