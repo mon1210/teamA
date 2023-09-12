@@ -17,7 +17,8 @@ public class Battler
     public int AT { get ; set; }
 
     //‚í‚´ƒŠƒXƒg
-    public List<Move> Moves { get; set; }
+    public List<Move> AttackMoves { get; set; }
+    public List<Move>MagicMoves { get; set; }
 
     //‰Šú‰»ˆ—
     public void Init()
@@ -27,10 +28,23 @@ public class Battler
         HP = MaxHp;
         AT = _base.AT;
         MP = MaxMp;
-        Moves = new List<Move>();
+        AttackMoves = new List<Move>();
+        MagicMoves = new List<Move>();
         foreach (var useableMove in Base.UseableMove)
-        {
-            Moves.Add(new Move(useableMove.MoveBase));
+        {    AttackMoves.Add(new Move(useableMove.MoveBase));
+
+            //if (Base.state == BattlerBase.State.Attack)
+            //{
+            //    AttackMoves.Add(new Move(useableMove.MoveBase));
+            //    if(AttackMoves.Count >= 5)
+            //    {
+            //        Base.state = BattlerBase.State.Magic;
+            //    }
+            //}
+            //else
+            //{
+            //    MagicMoves.Add(new Move(useableMove.MoveBase));
+            //}
         }
 
     }
@@ -55,7 +69,7 @@ public class Battler
     //ƒ‰ƒ“ƒ_ƒ€‚Éˆê‚Â‚í‚´‚ğ•Ô‚·ŠÖ”
     public Move GetRondomMove()
     {
-        int r = Random.Range(0, Moves.Count);
-        return Moves[r];
+        int r = Random.Range(0, AttackMoves.Count);
+        return AttackMoves[r];
     }
 }

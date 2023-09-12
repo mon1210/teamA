@@ -16,7 +16,7 @@ public class AttackMoveBase : MoveBase
         //int型で受け取ったダメージをセット
         int damage = targetUnit.Battler.TakeDamage(power, sourcerUnit.Battler);
         //ダメージを与えた・受けたログを返す
-        return $"{sourcerUnit.Battler.Base.Name}の{Name}！\n{targetUnit.Battler.Base.Name}は{damage}のダメージ！";
+        return $"{sourcerUnit.Battler.Base.Name}の「{Name}」！\n{targetUnit.Battler.Base.Name}に{damage}のダメージ！";
     }
 
 }
