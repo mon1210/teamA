@@ -15,9 +15,12 @@ MonoBehaviour:
   name: "\u3084\u307E\u308C\u3093\u30FB\u6975"
   maxHp: 500
   maxMp: 0
-  attack: 10
+  attack: 0
   sprite: {fileID: 0}
   useableMove:
   - moveBase: {fileID: 11400000, guid: ed76443a4a69e4a4a97352d6bfc29903, type: 2}
+  - moveBase: {fileID: 11400000, guid: 03ac8c158d01da541bd7b2dc11b191e0, type: 2}
   - moveBase: {fileID: 11400000, guid: 60335feb9b5aca0458930f2bf3564bae, type: 2}
+  - moveBase: {fileID: 11400000, guid: b33416cbae572154496cd7d9f3db5b92, type: 2}
   - moveBase: {fileID: 11400000, guid: d5564a831e50c7a4ababfeb80acc91ff, type: 2}
+  state: 0
