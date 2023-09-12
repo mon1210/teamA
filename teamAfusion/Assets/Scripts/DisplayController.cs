@@ -25,6 +25,6 @@ public class DisplayController : MonoBehaviour
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("LastBattleeScene");
+        SceneManager.LoadScene("LastBattleScene");
     }
 }
