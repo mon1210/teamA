@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ResultScene4.unity
     guid: 64fa309e517e71c48bd38dc624e01f84
   - enabled: 1
-    path: Assets/Scenes/BattleScene1-1.unity
-    guid: dbeb1ef188bcbc148b8d3417ef15579f
-  - enabled: 1
     path: Assets/Scenes/Pause2Scene.unity
     guid: e5f3b1e21eee4af44a52c01c925fcc1d
   - enabled: 1
@@ -35,7 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameClearScene.unity
     guid: c8cb901fa51e6914198d8381c5c50742
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOverScene.unity
     guid: 0c7bddd94d5fbb54b82fb04e71a3f508
+  - enabled: 1
+    path: Assets/Scenes/BattleScene1-1.unity
+    guid: dbeb1ef188bcbc148b8d3417ef15579f
+  - enabled: 1
+    path: Assets/Scenes/BattleScene1-2.unity
+    guid: 7d070e9700474da41a3b93d91ac34ddb
+  - enabled: 1
+    path: Assets/Scenes/BattleScene1-3.unity
+    guid: 1aad7023b2a067242bd6844ad30b33fd
   m_configObjects: {}
