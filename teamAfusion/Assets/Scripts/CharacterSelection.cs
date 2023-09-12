@@ -15,6 +15,7 @@ public class CharacterSelection: MonoBehaviour
     //テキスト取得
     [SerializeField] Text text;
 
+    //[SerializeField] private string[] sceneName;
 
 
     // Start is called before the first frame update
