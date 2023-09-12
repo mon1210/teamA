@@ -13,18 +13,18 @@ public class DisplayController : MonoBehaviour
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("BattleScene1-1");
+        SceneManager.LoadScene("FirstBattleScene");
     }
     public void OnDisplayButton02()
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("BattleScene1-2");
+        SceneManager.LoadScene("LastBattleeScene");
     }
     public void OnDisplayButton03()
     {
         isSelect[0] = !isSelect[0];
 
-        SceneManager.LoadScene("BattleScene1-3");
+        SceneManager.LoadScene("SecondBattleScene");
     }
 }
