@@ -240,6 +240,8 @@ MonoBehaviour:
   playerUnit: {fileID: 648920793}
   enemyUnit: {fileID: 162344970}
   fade: {fileID: 1419460150}
+  nextSceneName: BossDisplayScene2
+  gameoverScene: GameOverScene
 --- !u!4 &43437974
 Transform:
   m_ObjectHideFlags: 0
