@@ -2420,6 +2420,8 @@ MonoBehaviour:
   playerUnit: {fileID: 1140020253}
   enemyUnit: {fileID: 1397053091}
   fade: {fileID: 1659943115}
+  nextSceneName: 
+  gameoverScene: GameOverScene
 --- !u!4 &1319720746
 Transform:
   m_ObjectHideFlags: 0

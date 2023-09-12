@@ -1056,6 +1056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859604353}
   - component: {fileID: 859604354}
+  - component: {fileID: 859604355}
   m_Layer: 5
   m_Name: MagicSelection
   m_TagString: Untagged
@@ -1093,6 +1094,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859604352}
   m_CullTransparentMesh: 1
+--- !u!114 &859604355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859604352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab44d267d953bd47ad818d57a5426f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movesParent: {fileID: 1661203643}
+  moveTextPrefab: {fileID: 8857958565124921070, guid: dfafe3e2fb6867a4daeeea4c901e092f, type: 3}
 --- !u!1 &897411217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2228,8 @@ MonoBehaviour:
   playerUnit: {fileID: 1196752698}
   enemyUnit: {fileID: 767940790}
   fade: {fileID: 289220583}
+  nextSceneName: GameClearScene
+  gameoverScene: GameOverScene
 --- !u!1 &1588519286
 GameObject:
   m_ObjectHideFlags: 0
