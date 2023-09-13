@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MagicFire
   m_EditorClassIdentifier: 
   name: "\u30D5\u30A1\u30A4\u30A2"
-  state: 1
+  moveStatus: 1
   power: 20
