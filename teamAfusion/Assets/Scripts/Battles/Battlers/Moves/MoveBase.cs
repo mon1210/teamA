@@ -10,6 +10,17 @@ public class MoveBase : ScriptableObject
     //ŠO•”‚Åæ“¾‚Å‚«‚é‚æ‚¤‚É
     public string Name { get => name; }
 
+    public enum SkillType
+    {
+        Default = -1,
+        Attack,
+        Magic,
+    }
+    [SerializeField]private SkillType moveStatus;
+    public SkillType MoveStatus { get => moveStatus; }
+
+    // enum{ Default = -1
+
     //‰¼‘zŠÖ”éŒ¾
     public virtual string RunMoveResult(BattleUnit sourcerUnit, BattleUnit targetUnit)
     {
