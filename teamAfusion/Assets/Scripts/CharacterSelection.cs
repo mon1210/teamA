@@ -3,170 +3,86 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class CharacterSelection: MonoBehaviour
 {
     //選択ボタンの取得
-    [SerializeField] GameObject[] selectButton = new GameObject[7];
+    [SerializeField] GameObject[] selectButton = new GameObject[6];
     //選択状態取得
-    [SerializeField] bool [] isSelect = new bool[7];
+    [SerializeField] bool[] isSelect;
     //テキスト取得
     [SerializeField] Text text;
 
-    //[SerializeField] private string[] sceneName;
+    [SerializeField] private string[] sceneName;
 
+    [SerializeField] private Button[] startButton;
+
+    [SerializeField] private Button[] Button;
+
+    private EventTrigger[] trigger;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 7; i++)
+        eventTrigger();
+        sceneName = new string[selectButton.Length];
+        isSelect = new bool[selectButton.Length];
+        
+
+        for (int i = 0; i < selectButton.Length; i++)
         {
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
         }
+        buttonCilcEvet();
+        
     }
-    // Update is called once per frame
-    void Update()
+    private void eventTrigger()
     {
-        //枠の表示切り替え
-        clickChecker();
-        clickButton();
+        for (int i = 0; i < selectButton.Length; i++)
+        {
+            trigger[i] = selectButton[i].GetComponent<EventTrigger>();
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            entry.callback.AddListener((enentDate) => { Debug.Log("押した"); });
+            trigger[i].triggers.Add(entry);
+        }
     }
 
-    public void OnButton()
+    private void buttonCilcEvet()
+    {
+        for (int i = 0; i < Button.Length; i++)
+            Button[i].onClick.AddListener(() => changSelectFlag(i));
+        for (int i = 0; i < startButton.Length; i++)
+            startButton[i].onClick.AddListener(() => clickButton());
+    }
+
+
+    private void changSelectFlag(int i)
     {
         //クリックされるたびにONとOFFを切り替える
-        isSelect[0] = !isSelect[0];
-        Debug.Log("押された");      
-    }
-    public void OnButton2()
-    {
-        isSelect[1] = !isSelect[1];
+        isSelect[i] = !isSelect[i];
+        selectButton[i].SetActive(isSelect[i]);
         Debug.Log("押された");
-    }
-    public void OnButton3()
-    {
-        isSelect[2] = !isSelect[2];
-        Debug.Log("押された");
-    }
-    public void OnButton4()
-    {
-        isSelect[3] = !isSelect[3];
-        Debug.Log("押された");
-    }
-    public void OnButton5()
-    {
-        isSelect[4] = !isSelect[4];
-        Debug.Log("押された");
-    }
-    public void OnButton6()
-    {
-        isSelect[5] = !isSelect[5];
-        Debug.Log("押された");
-    }
-    public void OnButton7()
-    {
-        isSelect[6] = !isSelect[6];
-        Debug.Log("押された");
+
     }
 
-
-    private void clickChecker()
-    {
-        //選択されていなければ枠を非表示する
-        if (isSelect[0] == false)
-        {
-            selectButton[0].SetActive(false);
-        }
-        //選択されてれば枠を表示する
-        else 
-        {
-            selectButton[0].SetActive(true);
-        }
-
-        if (isSelect[1] == false)
-        {
-            selectButton[1].SetActive(false);
-        }
-        else
-        {
-            selectButton[1].SetActive(true);
-        }
-
-        if (isSelect[2] == false)
-        {
-            selectButton[2].SetActive(false);
-        }
-        else
-        {
-            selectButton[2].SetActive(true);
-        }
-
-        if (isSelect[3] == false)
-        {
-            selectButton[3].SetActive(false);
-        }
-        else
-        {
-            selectButton[3].SetActive(true);
-        }
-
-        if (isSelect[4] == false)
-        {
-            selectButton[4].SetActive(false);
-        }
-        else
-        {
-            selectButton[4].SetActive(true);
-        }
-
-        if (isSelect[5] == false)
-        {
-            selectButton[5].SetActive(false);
-        }
-        else
-        {
-            selectButton[5].SetActive(true);
-        }
-
-        if (isSelect[6] == false)
-        {
-            selectButton[6].SetActive(false);
-        }
-        else
-        {
-            selectButton[6].SetActive(true);
-        }
-    }
+   
+    
     //キャラクター選択結果にシーン移動する処理
      private void clickButton()
     {
-        if (isSelect[0] == true && isSelect[6]==true)
+        for(int i= 0;i<isSelect.Length;i++)
         {
-            SceneManager.LoadScene("ResultScene");
+            if (isSelect[i])
+            {
+                SceneManager.LoadScene(sceneName[i]);
+            }
         }
-        else if (isSelect[1] == true && isSelect[6] == true)
-        {
-            SceneManager.LoadScene("ResultScene2");
-        }
-        else if (isSelect[2] == true && isSelect[6] == true)
-        {
-            SceneManager.LoadScene("ResultScene3");
-        }
-        else if (isSelect[3] == true && isSelect[6] == true)
-        {
-            SceneManager.LoadScene("ResultScene4");
-        }
-        else if (isSelect[4] == true && isSelect[6] == true)
-        {
-            SceneManager.LoadScene("ResultScene");
-        }
-        else if (isSelect[5] == true && isSelect[6] == true)
-        {
-            SceneManager.LoadScene("ResultScene2");
-        }      
     }
 
 }
