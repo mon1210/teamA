@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class CharacterSelection: MonoBehaviour
 {
     //選択ボタンの取得
-    [SerializeField] GameObject[] selectButton = new GameObject[6];
+    [SerializeField] GameObject[] selectButton = new GameObject[7];
     //選択状態取得
     [SerializeField] bool[] isSelect;
     //テキスト取得
@@ -19,68 +19,62 @@ public class CharacterSelection: MonoBehaviour
 
     [SerializeField] private string[] sceneName;
 
-    [SerializeField] private Button[] startButton;
-
-    [SerializeField] private Button[] Button;
-
-    private EventTrigger[] trigger;
+    private bool flag;
 
     // Start is called before the first frame update
     void Start()
     {
-        eventTrigger();
         sceneName = new string[selectButton.Length];
         isSelect = new bool[selectButton.Length];
-        
-
-        for (int i = 0; i < selectButton.Length; i++)
+        for (int i = 0; i < selectButton.Length - 1; i++)
         {
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
         }
-        buttonCilcEvet();
-        
     }
-    private void eventTrigger()
+    // Update is called once per frame
+    void Update()
     {
-        for (int i = 0; i < selectButton.Length; i++)
+        //枠の表示切り替え
+        clickChecker();
+        clickButton();
+    }
+   public void OnButton()
+   {
+        for (int i = 0; i < selectButton.Length - 1; i++)
         {
-            trigger[i] = selectButton[i].GetComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerDown;
-            entry.callback.AddListener((enentDate) => { Debug.Log("押した"); });
-            trigger[i].triggers.Add(entry);
+            //クリックされるたびにONとOFFを切り替える
+            isSelect[i] = !isSelect[i];
+            Debug.Log("押された");
         }
-    }
-
-    private void buttonCilcEvet()
+   }
+    private void clickChecker()
     {
-        for (int i = 0; i < Button.Length; i++)
-            Button[i].onClick.AddListener(() => changSelectFlag(i));
-        for (int i = 0; i < startButton.Length; i++)
-            startButton[i].onClick.AddListener(() => clickButton());
-    }
-
-
-    private void changSelectFlag(int i)
-    {
-        //クリックされるたびにONとOFFを切り替える
-        isSelect[i] = !isSelect[i];
-        selectButton[i].SetActive(isSelect[i]);
-        Debug.Log("押された");
-
-    }
-
-   
-    
-    //キャラクター選択結果にシーン移動する処理
-     private void clickButton()
-    {
-        for(int i= 0;i<isSelect.Length;i++)
+        for (int i = 0; i < selectButton.Length - 1; i++) 
         {
-            if (isSelect[i])
+            if (isSelect[i]== true)
             {
-                SceneManager.LoadScene(sceneName[i]);
+                selectButton[i].SetActive(true);
+            }
+            else
+            {
+                selectButton[i].SetActive(false);
+            }
+        }
+
+    }
+    //キャラクター選択結果にシーン移動する処理
+    private void clickButton()
+    {
+        if (!isSelect[6]) return;
+        {
+            for (int i = 0; i < isSelect.Length - 1; i++)
+            {
+                if (isSelect[i])
+                {
+                    SceneManager.LoadScene(sceneName[i]);
+                    break;
+                }
             }
         }
     }
