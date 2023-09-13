@@ -18,16 +18,9 @@ public class SelectableText : MonoBehaviour
     //指定されたテキストの色変更
     public void SetSelectedColor(bool selected)
     {
-        //選択中なら黄色
-        if(selected)
-        {
-            text.color = Color.yellow;
-        }
-        //そうでなければ白
-        else
-        {
-            text.color = Color.white;
-        }
+        //選択中なら黄色(そうでないな白)
+        text.color = selected ? Color.yellow : Color.white;
+        
     }
 
     //引数の名前をテキストに代入
