@@ -52,7 +52,7 @@ public class BattleSystem : MonoBehaviour
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
         attackSelectionUI.Init(player.AttackMoves);
-        //magicSelectionUI.Init(player.MagicMoves);
+        magicSelectionUI.Init(player.MagicMoves);
         ultimateSelectionUI.Init();
 
         actionSelectionUI.CloseSelectionUI();
@@ -190,7 +190,7 @@ public class BattleSystem : MonoBehaviour
     private void attackMove()
     {
         //ターン処理
-        StartCoroutine(runTurns());
+        StartCoroutine(attackRunTurns());
 
         //行動後にUIを閉じる
         attackSelectionUI.CloseSelectionUI(); 
@@ -209,7 +209,7 @@ public class BattleSystem : MonoBehaviour
     private void magicMove()
     {
         //ターン処理
-        StartCoroutine(runTurns());
+        StartCoroutine(magicRunTurns());
         //行動後にUIを閉じる
         magicSelectionUI.CloseSelectionUI();
 
@@ -237,7 +237,7 @@ public class BattleSystem : MonoBehaviour
     private void ultimateMove()
     {   
         //ターン処理
-        StartCoroutine(runTurns());
+        //StartCoroutine(runTurns());
 
         //行動後にUIを閉じる
         ultimateSelectionUI.CloseSelectionUI();
@@ -253,7 +253,7 @@ public class BattleSystem : MonoBehaviour
 
 
     //お互いの技が発生する「1ターン」の動き
-    private IEnumerator runTurns()
+    private IEnumerator attackRunTurns()
     {
         //phase変更
         phase = Phase.RunTurns;
@@ -274,6 +274,44 @@ public class BattleSystem : MonoBehaviour
         Move enemyMove = enemyUnit.Battler.GetRondomMove();
         //敵の攻撃
         yield return runMove(enemyMove,enemyUnit, playerUnit);
+        //敗北処理
+        if (phase == Phase.BattleOver)
+        {
+            yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！", auto: false);
+            phase = Phase.GameOver;
+            if (phase == Phase.GameOver)
+            {
+                onNextScene(gameoverScene);
+            }
+            yield break;
+        }
+
+        //ターン終了時ダイアログ
+        yield return battleDialog.TypeDialog("どうする？");
+        //アクションセレクションへ戻る
+        actionSelection();
+    }
+    private IEnumerator magicRunTurns()
+    {
+        //phase変更
+        phase = Phase.RunTurns;
+
+        //plyermoveにわざ(選択中のIndex)を代入
+        Move playerMove = playerUnit.Battler.MagicMoves[magicSelectionUI.SelectedIndex];
+        //自分の攻撃
+        yield return runMove(playerMove, playerUnit, enemyUnit);
+        //勝利処理
+        if (phase == Phase.BattleOver)
+        {
+            yield return battleDialog.TypeDialog($"{enemyUnit.Battler.Base.Name}をたおした！");
+            onNextScene(nextSceneName);
+            yield break;
+        }
+
+        //enemymoveにランダムに一つわざを代入
+        Move enemyMove = enemyUnit.Battler.GetRondomMove();
+        //敵の攻撃
+        yield return runMove(enemyMove, enemyUnit, playerUnit);
         //敗北処理
         if (phase == Phase.BattleOver)
         {

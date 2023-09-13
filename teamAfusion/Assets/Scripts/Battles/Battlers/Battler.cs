@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MoveBase;
 
 [System.Serializable]
 public class Battler
@@ -8,6 +9,9 @@ public class Battler
     [SerializeField] BattlerBase _base;
 
     public BattlerBase Base { get => _base; }
+    [SerializeField] MoveBase _moveBase;
+
+    public MoveBase MoveBase { get => _moveBase; }
 
     //ステータス
     public int MaxHp { get ; set; }
@@ -31,22 +35,29 @@ public class Battler
         AttackMoves = new List<Move>();
         MagicMoves = new List<Move>();
         foreach (var useableMove in Base.UseableMove)
-        {    AttackMoves.Add(new Move(useableMove.MoveBase));
-
-            //if (Base.state == BattlerBase.State.Attack)
+        {    //AttackMoves.Add(new Move(useableMove.MoveBase));
+            //switch文 データの本体.わざでーた.データのステータス
+            //if (useableMove.MoveBase.MoveStatus == MoveBase.SkillType.Attack)
             //{
             //    AttackMoves.Add(new Move(useableMove.MoveBase));
-            //    if(AttackMoves.Count >= 5)
-            //    {
-            //        Base.state = BattlerBase.State.Magic;
-            //    }
+                
             //}
             //else
             //{
             //    MagicMoves.Add(new Move(useableMove.MoveBase));
             //}
+            switch(useableMove.MoveBase.MoveStatus)
+            {
+                case SkillType.Attack:
+                    AttackMoves.Add(new Move(useableMove.MoveBase));
+                    break;
+                case SkillType.Magic:
+                    MagicMoves.Add(new Move(useableMove.MoveBase));
+                    break;
+                default:break;
+            }
         }
-
+        Debug.Log($"AttackMoves.Count:{AttackMoves.Count}\nMagicMoves.Count:{MagicMoves.Count}\n");
     }
 
     //「こうげき」行動のダメージ処理

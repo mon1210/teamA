@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 250, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1990,6 +1990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battler:
     _base: {fileID: 11400000, guid: d6efe746042a5134d9ee7f281ecfcc99, type: 2}
+    _moveBase: {fileID: 11400000, guid: f676a301ab48fc641b4c829c29d4f03c, type: 2}
 --- !u!1 &1177776255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionSelectionUI: {fileID: 1100017474}
   attackSelectionUI: {fileID: 1812424790}
-  magicSelectionUI: {fileID: 0}
+  magicSelectionUI: {fileID: 664783361}
   ultimateSelectionUI: {fileID: 1133932226}
   battleDialog: {fileID: 358402313}
   playerUnit: {fileID: 1140020253}
@@ -2562,6 +2563,7 @@ MonoBehaviour:
   battleSystem: {fileID: 1319720745}
   enemyBattler:
     _base: {fileID: 11400000, guid: 0265a267d43c39a4098ee5ffadbc9743, type: 2}
+    _moveBase: {fileID: 11400000, guid: 9ace3f56b4abec144ad9a3f378a7e37f, type: 2}
 --- !u!4 &1488070067
 Transform:
   m_ObjectHideFlags: 0
