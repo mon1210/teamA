@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/ChoiceScene.unity
     guid: a19c33261afc5d140bd84af02bf24918
   - enabled: 1
-    path: Assets/Scenes/ResultScene/ResultScene.unity
+    path: Assets/Scenes/ResultScene/FirstSynthesisScene.unity
     guid: 38a8162a4c87c6d4c93ccf7d8eb15707
   - enabled: 1
-    path: Assets/Scenes/ResultScene/ResultScene2.unity
+    path: Assets/Scenes/ResultScene/SecondSynthesisScene.unity
     guid: 7b551dc1471facc4d9e650c42b255461
   - enabled: 0
     path: Assets/Scenes/ResultScene/ResultScene3.unity
