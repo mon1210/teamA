@@ -107,7 +107,7 @@ public class CharacterSelection: MonoBehaviour
             }
             else if (isSelect[5] == true && isSelect[6] == true)
             {
-                SceneManager.LoadScene("FirstSynthesisScene");
+                SceneManager.LoadScene("SecondSynthesisScene");
             }
 
     }
