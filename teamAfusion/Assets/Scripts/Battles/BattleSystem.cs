@@ -21,9 +21,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     //fadeに必要な素材の取得
     [SerializeField] Fade fade;
-    //
+    //移動後のシーン名を取得
     [SerializeField] private string nextSceneName;
-    //
+    //ゲームオーバー時のシーン名を取得
     [SerializeField] private string gameoverScene;
 
     //phase分けの変数宣言
@@ -53,7 +53,7 @@ public class BattleSystem : MonoBehaviour
         actionSelectionUI.Init();
         attackSelectionUI.Init(player.AttackMoves);
         magicSelectionUI.Init(player.MagicMoves);
-        ultimateSelectionUI.Init();
+        ultimateSelectionUI.Init(player.UltimateMoves);
 
         actionSelectionUI.CloseSelectionUI();
         //バトル前のSetUp
@@ -140,6 +140,10 @@ public class BattleSystem : MonoBehaviour
         {
             attackMove();
         }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            closeSelectionUI(attackSelectionUI);
+        }
     }
     //まほう選択関数
     private void handleMagicSelection()
@@ -151,6 +155,10 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             magicMove();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            closeSelectionUI(magicSelectionUI);
         }
 
     }
@@ -164,6 +172,10 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ultimateMove();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            closeSelectionUI(ultimateSelectionUI);
         }
 
     }
@@ -181,9 +193,9 @@ public class BattleSystem : MonoBehaviour
     //こうげき選択UI表示関数
     private void attackSelection()
     {
-        //
+        //phaseをバトルアクションへ
         phase = Phase.AttackSelection;
-        //
+        //アクションセレクションUIを表示
         attackSelectionUI.OpenSelectionUI();
     }
     //こうげき処理
@@ -200,12 +212,12 @@ public class BattleSystem : MonoBehaviour
     //まほう選択UI表示関数
     private void magicSelection()
     {
-        //
+        //phaseをバトルアクションへ
         phase = Phase.MagicSelection;
-        //
+        //アクションセレクションUIを表示
         magicSelectionUI.OpenSelectionUI();
     }
-    //一つ目のまほう処理
+    //まほう処理
     private void magicMove()
     {
         //ターン処理   plyermoveにわざ(選択中のIndex)を代入
@@ -214,43 +226,34 @@ public class BattleSystem : MonoBehaviour
         magicSelectionUI.CloseSelectionUI();
 
     }
-    //もどる
-    private void magicBack()
-    {
-        //
-        phase = Phase.ActionSelection;
-        //
-        magicSelectionUI.CloseSelectionUI();
-    }
-
-
     /********************** ひっさつ *************************/
     //ひっさつ選択UI表示関数
     private void ultimateSelection()
     {
-        //
+        //phaseをバトルアクションへ
         phase = Phase.UltimateSelection;
-        //
+        //アクションセレクションUIを表示
         ultimateSelectionUI.OpenSelectionUI();
     }
-    //一つ目のひっさつ処理
+    //ひっさつ処理
     private void ultimateMove()
-    {   
-        //ターン処理
-        //StartCoroutine(runTurns());
+    {
+        //ターン処理   plyermoveにわざ(選択中のIndex)を代入
+        StartCoroutine(runTurns(playerUnit.Battler.UltimateMoves[ultimateSelectionUI.SelectedIndex]));
 
         //行動後にUIを閉じる
         ultimateSelectionUI.CloseSelectionUI();
     }
-    //もどる
-    private void ultimateBack()
-    {
-        //
-        phase = Phase.ActionSelection;
-        //
-        ultimateSelectionUI.CloseSelectionUI();
-    }
 
+
+    //もどる処理
+    private void closeSelectionUI(BaseSelectionUI SelectionUI)
+    {
+        //phaseをバトルアクションへ
+        phase = Phase.ActionSelection;
+        //開いているUIを閉じる
+        SelectionUI.CloseSelectionUI();
+    }
 
     //お互いの技が発生する「1ターン」の動き
     private IEnumerator runTurns(Move playerMove)
@@ -299,13 +302,14 @@ public class BattleSystem : MonoBehaviour
         yield return battleDialog.TypeDialog(resultText, auto: false);
         //被ダメージ処理によるUI更新
         targetUnit.UpdateUI();
-        //技使用者のUI更新(HP回復時に使用)
+        //技使用者のUI更新(HP回復時,まほう使用時に使用)
         sourceUnit.UpdateUI();
         //被ダメージ者がHP0以下でPhase切り替え
         if (targetUnit.Battler.HP <= 0) 
         {
             phase = Phase.BattleOver;
         }
+
     }
     //2秒かけてフェードアウトしてシーン切り替え
     private void onNextScene(string sceneName)
