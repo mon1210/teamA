@@ -11,78 +11,105 @@ using UnityEngine.UI;
 public class CharacterSelection: MonoBehaviour
 {
     //選択ボタンの取得
-    [SerializeField] GameObject[] selectButton = new GameObject[6];
+    [SerializeField] GameObject[] selectButton = new GameObject[7];
     //選択状態取得
     [SerializeField] bool[] isSelect;
     //テキスト取得
     [SerializeField] Text text;
 
-    [SerializeField] private string[] sceneName;
-
-    [SerializeField] private Button[] startButton;
-
-    [SerializeField] private Button[] Button;
-
-    private EventTrigger[] trigger;
-
     // Start is called before the first frame update
     void Start()
     {
-        eventTrigger();
-        sceneName = new string[selectButton.Length];
-        isSelect = new bool[selectButton.Length];
-        
-
-        for (int i = 0; i < selectButton.Length; i++)
+        for (int i = 0; i < selectButton.Length - 1; i++)
         {
             //ボタンの選択を全て取り消す
             isSelect[i] = false;
         }
-        buttonCilcEvet();
-        
     }
-    private void eventTrigger()
+    // Update is called once per frame
+    void Update()
     {
-        for (int i = 0; i < selectButton.Length; i++)
-        {
-            trigger[i] = selectButton[i].GetComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerDown;
-            entry.callback.AddListener((enentDate) => { Debug.Log("押した"); });
-            trigger[i].triggers.Add(entry);
-        }
+        //枠の表示切り替え
+        selectChecker();
+        clickButton();
     }
+    //選択ボタンの処理
+   public void OnSelectButton()
+   {     
+       //クリックされるたびにONとOFFを切り替える
+        isSelect[0] = !isSelect[0];  
+   }
+   public void OnSelectButton2()
+   {
+        isSelect[1] = !isSelect[1];
+   }
+   public void OnSelectButton3()
+   {
+        isSelect[2] = !isSelect[2];
+   }
+   public void OnSelectButton4()
+   {
+        isSelect[3] = !isSelect[3];
+   }
+   public void OnSelectButton5()
+   {
+        isSelect[4] = !isSelect[4];
+   }
+   public void OnSelectButton6()
+   {
+        isSelect[5] = !isSelect[5];
+   }
+    //合成ボタンの処理
+   public void OnStartButton()
+   {
+        isSelect[6] = !isSelect[6];
+   }
+    //選択されているかどうかの処理
+   private void selectChecker()
+   {
+      for (int i = 0; i < selectButton.Length; i++) 
+      {
+            //枠を非表示
+          if (isSelect[i]== true)
+          {
+              selectButton[i].SetActive(true);
+          }
+          //枠を表示
+          else
+          {
+              selectButton[i].SetActive(false);
+          }
+      }
 
-    private void buttonCilcEvet()
-    {
-        for (int i = 0; i < Button.Length; i++)
-            Button[i].onClick.AddListener(() => changSelectFlag(i));
-        for (int i = 0; i < startButton.Length; i++)
-            startButton[i].onClick.AddListener(() => clickButton());
-    }
-
-
-    private void changSelectFlag(int i)
-    {
-        //クリックされるたびにONとOFFを切り替える
-        isSelect[i] = !isSelect[i];
-        selectButton[i].SetActive(isSelect[i]);
-        Debug.Log("押された");
-
-    }
-
-   
-    
+   }
     //キャラクター選択結果にシーン移動する処理
-     private void clickButton()
+    private void clickButton()
     {
-        for(int i= 0;i<isSelect.Length;i++)
-        {
-            if (isSelect[i])
+            if (isSelect[0] == true && isSelect[6]==true)
             {
-                SceneManager.LoadScene(sceneName[i]);
+                SceneManager.LoadScene("FirstSynthesisScene");
             }
-        }
+            else if (isSelect[1] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("FirstSynthesisScene");
+            }
+            else if (isSelect[2] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("SecondSynthesisScene");
+            }
+            else if (isSelect[3] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("ThirdSynthesisScene");
+            }
+            else if (isSelect[4] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("SecondSynthesisScene");
+            }
+            else if (isSelect[5] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("SecondSynthesisScene");
+            }
+
     }
 
 }
