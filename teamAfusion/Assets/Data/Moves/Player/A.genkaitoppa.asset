@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e8146fdd6e4d344b9fbeeec539b3b8, type: 3}
-  m_Name: Heal0
+  m_Script: {fileID: 11500000, guid: 70920a919d5fba143887ff9888c6c2e1, type: 3}
+  m_Name: A.genkaitoppa
   m_EditorClassIdentifier: 
-  name: "\u30DD\u30A4\u30DF"
-  healPoint: 10
+  name: "\u9650\u754C\u7A81\u7834"
+  power: 100

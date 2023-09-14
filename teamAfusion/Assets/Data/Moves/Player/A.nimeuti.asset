@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70920a919d5fba143887ff9888c6c2e1, type: 3}
-  m_Name: MagicFire
+  m_Name: A.nimeuti
   m_EditorClassIdentifier: 
-  name: "\u30D5\u30A1\u30A4\u30A2"
-  moveStatus: 1
-  power: 20
+  name: "\u307F\u306D\u3046\u3061"
+  power: 50
