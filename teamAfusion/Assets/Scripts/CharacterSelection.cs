@@ -17,15 +17,9 @@ public class CharacterSelection: MonoBehaviour
     //テキスト取得
     [SerializeField] Text text;
 
-    [SerializeField] private string[] sceneName;
-
-    private bool flag;
-
     // Start is called before the first frame update
     void Start()
     {
-        sceneName = new string[selectButton.Length];
-        isSelect = new bool[selectButton.Length];
         for (int i = 0; i < selectButton.Length - 1; i++)
         {
             //ボタンの選択を全て取り消す
@@ -36,47 +30,86 @@ public class CharacterSelection: MonoBehaviour
     void Update()
     {
         //枠の表示切り替え
-        clickChecker();
+        selectChecker();
         clickButton();
     }
-   public void OnButton()
-   {
-        for (int i = 0; i < selectButton.Length - 1; i++)
-        {
-            //クリックされるたびにONとOFFを切り替える
-            isSelect[i] = !isSelect[i];
-            Debug.Log("押された");
-        }
+    //選択ボタンの処理
+   public void OnSelectButton()
+   {     
+       //クリックされるたびにONとOFFを切り替える
+        isSelect[0] = !isSelect[0];  
    }
-    private void clickChecker()
-    {
-        for (int i = 0; i < selectButton.Length - 1; i++) 
-        {
-            if (isSelect[i]== true)
-            {
-                selectButton[i].SetActive(true);
-            }
-            else
-            {
-                selectButton[i].SetActive(false);
-            }
-        }
+   public void OnSelectButton2()
+   {
+        isSelect[1] = !isSelect[1];
+   }
+   public void OnSelectButton3()
+   {
+        isSelect[2] = !isSelect[2];
+   }
+   public void OnSelectButton4()
+   {
+        isSelect[3] = !isSelect[3];
+   }
+   public void OnSelectButton5()
+   {
+        isSelect[4] = !isSelect[4];
+   }
+   public void OnSelectButton6()
+   {
+        isSelect[5] = !isSelect[5];
+   }
+    //合成ボタンの処理
+   public void OnStartButton()
+   {
+        isSelect[6] = !isSelect[6];
+   }
+    //選択されているかどうかの処理
+   private void selectChecker()
+   {
+      for (int i = 0; i < selectButton.Length; i++) 
+      {
+            //枠を非表示
+          if (isSelect[i]== true)
+          {
+              selectButton[i].SetActive(true);
+          }
+          //枠を表示
+          else
+          {
+              selectButton[i].SetActive(false);
+          }
+      }
 
-    }
+   }
     //キャラクター選択結果にシーン移動する処理
     private void clickButton()
     {
-        if (!isSelect[6]) return;
-        {
-            for (int i = 0; i < isSelect.Length - 1; i++)
+            if (isSelect[0] == true && isSelect[6]==true)
             {
-                if (isSelect[i])
-                {
-                    SceneManager.LoadScene(sceneName[i]);
-                    break;
-                }
+                SceneManager.LoadScene("FirstSynthesisScene");
             }
-        }
+            else if (isSelect[1] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("FirstSynthesisScene");
+            }
+            else if (isSelect[2] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("SecondSynthesisScene");
+            }
+            else if (isSelect[3] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("ThirdSynthesisScene");
+            }
+            else if (isSelect[4] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("SecondSynthesisScene");
+            }
+            else if (isSelect[5] == true && isSelect[6] == true)
+            {
+                SceneManager.LoadScene("FirstSynthesisScene");
+            }
+
     }
 
 }
