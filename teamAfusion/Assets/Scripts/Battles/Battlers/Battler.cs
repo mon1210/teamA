@@ -9,9 +9,6 @@ public class Battler
     [SerializeField] BattlerBase _base;
 
     public BattlerBase Base { get => _base; }
-    [SerializeField] MoveBase _moveBase;
-
-    public MoveBase MoveBase { get => _moveBase; }
 
     //ステータス
     public int MaxHp { get ; set; }
@@ -23,6 +20,8 @@ public class Battler
     //わざリスト
     public List<Move> AttackMoves { get; set; }
     public List<Move>MagicMoves { get; set; }
+    //
+    public List<Move> UltimateMoves { get; set; }
 
     //初期化処理
     public void Init()
@@ -34,18 +33,10 @@ public class Battler
         MP = MaxMp;
         AttackMoves = new List<Move>();
         MagicMoves = new List<Move>();
+        UltimateMoves = new List<Move>();
         foreach (var useableMove in Base.UseableMove)
-        {    //AttackMoves.Add(new Move(useableMove.MoveBase));
+        {    
             //switch文 データの本体.わざでーた.データのステータス
-            //if (useableMove.MoveBase.MoveStatus == MoveBase.SkillType.Attack)
-            //{
-            //    AttackMoves.Add(new Move(useableMove.MoveBase));
-                
-            //}
-            //else
-            //{
-            //    MagicMoves.Add(new Move(useableMove.MoveBase));
-            //}
             switch(useableMove.MoveBase.MoveStatus)
             {
                 case SkillType.Attack:
@@ -54,10 +45,12 @@ public class Battler
                 case SkillType.Magic:
                     MagicMoves.Add(new Move(useableMove.MoveBase));
                     break;
+                case SkillType.Ultimate:
+                    UltimateMoves.Add(new Move(useableMove.MoveBase));
+                    break;
                 default:break;
             }
         }
-        Debug.Log($"AttackMoves.Count:{AttackMoves.Count}\nMagicMoves.Count:{MagicMoves.Count}\n");
     }
 
     //「こうげき」行動のダメージ処理
@@ -75,6 +68,15 @@ public class Battler
     {
         //HPがマイナスにならないように
         HP = Mathf.Clamp(HP + healPoint, 0, MaxHp);
+    }
+    //「まほう」行動の処理
+    public void Magic(int magicPoint)
+    {
+        //MPが0以下でHPからMPが引かれる
+        if (MP > 0)
+            MP = Mathf.Clamp(MP - magicPoint, 0, MaxMp);
+        else
+            HP = Mathf.Clamp(HP - magicPoint, 0, MaxHp);
     }
 
     //ランダムに一つわざを返す関数
