@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70920a919d5fba143887ff9888c6c2e1, type: 3}
-  m_Name: Attack0
+  m_Name: A.messatu
   m_EditorClassIdentifier: 
-  name: "\u307C\u3046\u308A\u3087\u304F"
-  power: 20
+  name: "\u3081\u3063\u3055\u3064"
+  power: 80

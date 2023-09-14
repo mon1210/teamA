@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70920a919d5fba143887ff9888c6c2e1, type: 3}
-  m_Name: Attack5
+  m_Script: {fileID: 11500000, guid: b0e8146fdd6e4d344b9fbeeec539b3b8, type: 3}
+  m_Name: M.H.pehomazun
   m_EditorClassIdentifier: 
-  name: "\u3072\u3063\u3071\u305F\u304F"
-  power: 30
+  name: "\u307A\u30DB\u30DE\u30BA\u30F3"
+  moveStatus: 1
+  healPoint: 500
+  magicPoint: 100
