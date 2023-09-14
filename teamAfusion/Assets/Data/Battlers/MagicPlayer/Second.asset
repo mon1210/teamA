@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02e8f2dac0a5604dbdcb08398dadf38, type: 3}
+  m_Name: Second
+  m_EditorClassIdentifier: 
+  name: "\u3059\u3066\u3063\u304D"
+  maxHp: 100
+  maxMp: 150
+  attack: 10
+  sprite: {fileID: 0}
+  useableMove:
+  - moveBase: {fileID: 11400000, guid: 7d233948673102149afc145b7d2e9380, type: 2}
+  - moveBase: {fileID: 11400000, guid: ea2ddee5edca9d24d9f4041c033d6a67, type: 2}
+  - moveBase: {fileID: 11400000, guid: a9102f5ff9fbbaf47932846dacc116af, type: 2}
+  - moveBase: {fileID: 11400000, guid: 9fadcb66b49e16b489aeac8a35831fda, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4edc803acfc2d02449504df531c8242a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 030fb7105cb27694ead78330ae102344, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6d925cebbf125e2478984c8a2a088f24, type: 2}
