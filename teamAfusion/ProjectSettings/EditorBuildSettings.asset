@@ -27,13 +27,13 @@ EditorBuildSettings:
     path: Assets/Scenes/BossDisplayScene.unity
     guid: 91cfdd61826305b4ab079842d6f0349a
   - enabled: 1
-    path: Assets/Scenes/BattleScene/AttackCharacter/FirstBattleScene.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/A.FirstBattleScene.unity
     guid: dbeb1ef188bcbc148b8d3417ef15579f
   - enabled: 1
     path: Assets/Scenes/BossDisplayScene1.unity
     guid: 25ce28326d923a2408cf2959e01bf1fb
   - enabled: 1
-    path: Assets/Scenes/BattleScene/AttackCharacter/SecondBattleScene.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/A.SecondBattleScene.unity
     guid: 7d070e9700474da41a3b93d91ac34ddb
   - enabled: 1
     path: Assets/Scenes/Pause2Scene.unity
@@ -45,16 +45,16 @@ EditorBuildSettings:
     path: Assets/Scenes/BossDisplayScene 2.unity
     guid: d3e668f5b66b94347b2939772af26fcf
   - enabled: 1
-    path: Assets/Scenes/BattleScene/AttackCharacter/LastBattleScene.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/A.ThirdtBattleScene.unity
     guid: 1aad7023b2a067242bd6844ad30b33fd
   - enabled: 1
     path: Assets/Scenes/GameClearScene.unity
     guid: c8cb901fa51e6914198d8381c5c50742
   - enabled: 1
-    path: Assets/Scenes/BattleScene/AttackCharacter/LastBattleScene.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/A.ThirdtBattleScene.unity
     guid: 1aad7023b2a067242bd6844ad30b33fd
   - enabled: 1
-    path: Assets/Scenes/BattleScene/AttackCharacter/SecondBattleScene.unity
+    path: Assets/Scenes/BattleScene/AttackCharacter/A.SecondBattleScene.unity
     guid: 7d070e9700474da41a3b93d91ac34ddb
   - enabled: 0
     path: Assets/Scenes/GameOverScene.unity
