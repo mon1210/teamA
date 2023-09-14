@@ -6,13 +6,20 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HealMoveBase : MoveBase
 {
+    //
     [SerializeField] int healPoint;
+    //
+    [SerializeField] int magicPoint;
+
     //外部で取得できるように
     public int HealPoint { get => healPoint; }
+    public int MagicPoint { get => magicPoint; }
 
     //関数のオーバーライド
     public override string RunMoveResult(BattleUnit sourcerUnit, BattleUnit targetUnit)
     {
+        //int型でmagicPointを受け取る
+        sourcerUnit.Battler.Magic(magicPoint);
         //int型でhealPointを受け取る
         sourcerUnit.Battler.Heal(healPoint);
         //回復したダイアログを返す
