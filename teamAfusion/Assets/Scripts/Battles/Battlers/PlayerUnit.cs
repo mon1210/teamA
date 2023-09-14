@@ -16,7 +16,7 @@ public class PlayerUnit : BattleUnit
         //playerのステータス設定
         nameText.text = battler.Base.Name;
         hpText.text=$"HP:{battler.HP}/{battler.MaxHp}";
-        mpText.text=$"MP:{battler.MP}/{battler.MaxHp}";
+        mpText.text=$"MP:{battler.MP}/{battler.MaxMp}";
     }
 
     //UIの更新
@@ -24,6 +24,6 @@ public class PlayerUnit : BattleUnit
     {
         //
         hpText.text = $"HP:{Battler.HP}/{Battler.MaxHp}";
-        mpText.text = $"MP:{Battler.MP}/{Battler.MaxHp}";
+        mpText.text = $"MP:{Battler.MP}/{Battler.MaxMp}";
     }
 }
