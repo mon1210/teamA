@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: First
   m_EditorClassIdentifier: 
   name: "\u304B\u308F\u3070\u305F"
-  maxHp: 100
+  maxHp: 125
   maxMp: 100
   attack: 0
   sprite: {fileID: 0}
@@ -23,5 +23,4 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: 530e9a3e00a41024e9b04ef31b69e3f3, type: 2}
   - moveBase: {fileID: 11400000, guid: 175d3d748f0ae0e4090e72bfd1c8679f, type: 2}
   - moveBase: {fileID: 11400000, guid: a0d1c566aa63e9248a2d643c9cfada26, type: 2}
-  - moveBase: {fileID: 11400000, guid: 1a4d74b40a7a4de4f9bbecadfe1e42f9, type: 2}
   - moveBase: {fileID: 11400000, guid: a59946c10395af74598712448d38d362, type: 2}
