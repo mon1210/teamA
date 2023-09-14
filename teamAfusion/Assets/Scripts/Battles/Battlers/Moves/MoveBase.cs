@@ -15,6 +15,7 @@ public class MoveBase : ScriptableObject
         Default = -1,
         Attack,
         Magic,
+        Ultimate,
     }
     [SerializeField]private SkillType moveStatus;
     public SkillType MoveStatus { get => moveStatus; }
