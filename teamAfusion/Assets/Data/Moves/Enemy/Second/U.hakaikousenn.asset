@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 049402d53e96a1646befa7b85d360385, type: 3}
-  m_Name: M.fire
+  m_Script: {fileID: 11500000, guid: 1218eb914a42a5740809f7181df637a1, type: 3}
+  m_Name: U.hakaikousenn
   m_EditorClassIdentifier: 
-  name: "\u30D5\u30A1\u30A4\u30A2"
-  moveStatus: 1
-  power: 40
-  magicPoint: 20
+  name: "\u306F\u304B\u3044\u3053\u3046\u305B\u3093"
+  moveStatus: 0
+  power: 100
+  magicPoint: 0
