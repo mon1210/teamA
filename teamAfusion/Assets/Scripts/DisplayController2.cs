@@ -16,6 +16,6 @@ public class DisplayController2: MonoBehaviour
     }
     public void OnBanlceDisplayButton3()
     {
-        SceneManager.LoadScene("B.LastBattleScene");
+        SceneManager.LoadScene("B.ThirdtBattleScene");
     }
 }
