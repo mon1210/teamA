@@ -2276,7 +2276,7 @@ MonoBehaviour:
   playerUnit: {fileID: 1140020253}
   enemyUnit: {fileID: 1397053091}
   fade: {fileID: 1659943115}
-  nextSceneName: A.BossDisplayScene1
+  nextSceneName: A.BossDisplayScene 1
   gameoverScene: GameOverScene
 --- !u!4 &1319720746
 Transform:

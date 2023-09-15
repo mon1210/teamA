@@ -20,8 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ResultScene/ThirdSynthesisScene.unity
     guid: f78d7c4fec4b37749be6e1c1741747d3
-  - enabled: 1
-    path: Assets/Scenes/BossDisplayScene/Attack/A.BossDisplayScene.unity
+  - enabled: 0
+    path: Assets/Scenes/BossDisplayScene 2.unity
     guid: d3e668f5b66b94347b2939772af26fcf
   - enabled: 1
     path: Assets/Scenes/BattleScene/AttackCharacter/A.FirstBattleScene.unity
