@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Third
   m_EditorClassIdentifier: 
   name: "\u30A8\u30A2"
-  maxHp: 125
+  maxHp: 150
   maxMp: 200
   attack: 20
   sprite: {fileID: 0}
@@ -22,7 +22,7 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: ea2ddee5edca9d24d9f4041c033d6a67, type: 2}
   - moveBase: {fileID: 11400000, guid: a9102f5ff9fbbaf47932846dacc116af, type: 2}
   - moveBase: {fileID: 11400000, guid: 9fadcb66b49e16b489aeac8a35831fda, type: 2}
-  - moveBase: {fileID: 11400000, guid: 030fb7105cb27694ead78330ae102344, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4edc803acfc2d02449504df531c8242a, type: 2}
   - moveBase: {fileID: 11400000, guid: c7c8f2c25f4939f4784d8358c7a0cf98, type: 2}
   - moveBase: {fileID: 11400000, guid: 7187758cc9cee8440b8341dfd08c550c, type: 2}
   - moveBase: {fileID: 11400000, guid: 030fb7105cb27694ead78330ae102344, type: 2}

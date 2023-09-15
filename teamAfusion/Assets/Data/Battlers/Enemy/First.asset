@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: First
   m_EditorClassIdentifier: 
   name: "\u3084\u307E\u308C\u3093"
-  maxHp: 200
+  maxHp: 10
   maxMp: 100
   attack: 0
   sprite: {fileID: 0}
