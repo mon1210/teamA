@@ -294,12 +294,12 @@ public class BattleSystem : MonoBehaviour
         //”s–kˆ—
         if (phase == Phase.BattleOver)
         {
-            //
-            SEManager.Instance.PlaySE(SESoundData.SE.Defeat);
             yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}‚Í–Ú‚Ì‘O‚ª‚Ü‚Á‚­‚ç‚É‚È‚Á‚½I", auto: false);
             phase = Phase.GameOver;
             if (phase == Phase.GameOver)
             {
+                //
+                SEManager.Instance.PlaySE(SESoundData.SE.Defeat);
                 onNextScene(gameoverScene);
             }
             yield break;
