@@ -94,7 +94,7 @@ public class CharacterSelection: MonoBehaviour
             }
             else if (isSelect[2] == true)
             {
-                SceneManager.LoadScene("FirstSynthesisScene");
+                SceneManager.LoadScene("ThirdSynthesisScene");
             }
             else if (isSelect[3] == true )
             {
