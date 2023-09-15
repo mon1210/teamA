@@ -46,8 +46,8 @@ public class BattleSystem : MonoBehaviour
     {
         //初期化処理
         phase = Phase.Start;
-        //デバッグ
-        Debug.Log("バトル開始");
+
+        //SoundManager.Instance.PlayBGM(BGMSoundData.BGM.FirstBattle);
 
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
