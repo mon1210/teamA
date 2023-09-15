@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SEManager;
 
 //MoveBase(Name)を継承した「回復」技の基礎データ
 [CreateAssetMenu]
@@ -22,6 +23,8 @@ public class HealMoveBase : MoveBase
         sourcerUnit.Battler.Magic(magicPoint);
         //int型でhealPointを受け取る
         sourcerUnit.Battler.Heal(healPoint);
+        //回復SE再生
+        SEManager.Instance.PlaySE(SESoundData.SE.Heal);
         //回復したダイアログを返す
         return $"{sourcerUnit.Battler.Base.Name}の{Name}!\n{sourcerUnit.Battler.Base.Name}はHPを{healPoint}回復した！";
     }

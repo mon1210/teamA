@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SEManager;
 
 public class BaseSelectionUI : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class BaseSelectionUI : MonoBehaviour
     public void Init(List<Move> moves)
     {
         //子要素のSelectableTextを取得     prefab生成前に取得しようとする
-        //selectableTexts = GetComponentsInChildren<SelectableText>();
         setUISize(moves);
     }
 
@@ -56,12 +56,16 @@ public class BaseSelectionUI : MonoBehaviour
     {
         //上入力で上のテキスト選択
         if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
+        {   
+            //選択SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Selection);
             selectedIndex--;
         }
         //下入力で下のテキスト選択
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            //選択SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Selection);
             selectedIndex++;
         }
 

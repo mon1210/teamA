@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SEManager;
 
 public class ActionSelectionUI : MonoBehaviour
 {
@@ -29,11 +30,15 @@ public class ActionSelectionUI : MonoBehaviour
         //上入力で上のテキスト選択
         if(Input.GetKeyDown(KeyCode.UpArrow)) 
         {
+            //選択SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Selection);
             selectedIndex--;
         }
         //下入力で下のテキスト選択
         else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
+            //選択SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Selection);
             selectedIndex++;
         }
 

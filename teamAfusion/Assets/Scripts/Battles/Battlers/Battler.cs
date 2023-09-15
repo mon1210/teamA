@@ -20,7 +20,6 @@ public class Battler
     //‚í‚´ƒŠƒXƒg
     public List<Move> AttackMoves { get; set; }
     public List<Move>MagicMoves { get; set; }
-    //
     public List<Move> UltimateMoves { get; set; }
 
     //‰Šú‰»ˆ—
