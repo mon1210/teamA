@@ -5,26 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DisplayController : MonoBehaviour
 {
-    //‘I‘ğó‘Ôæ“¾
-    [SerializeField] bool[] isSelect = new bool[1];
-
     //•\¦‚ÉŠÖ‚·‚éˆ—
-    public void OnDisplayButton()
+    public void OnAttackDisplayButton()
     {
-        isSelect[0] = !isSelect[0];
-
-        SceneManager.LoadScene("FirstBattleScene");
+        SceneManager.LoadScene("A.FirstBattleScene");
     }
-    public void OnDisplayButton02()
+    public void OnAttackDisplayButton2()
     {
-        isSelect[0] = !isSelect[0];
-
-        SceneManager.LoadScene("SecondBattleScene");
+        SceneManager.LoadScene("A.SecondBattleScene");
     }
-    public void OnDisplayButton03()
+    public void OnAttackDisplayButton3()
     {
-        isSelect[0] = !isSelect[0];
-
-        SceneManager.LoadScene("LastBattleScene");
+        SceneManager.LoadScene("A.LastBattleScene");
     }
 }
