@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SEManager;
 
 public class BattleSystem : MonoBehaviour
 { 
@@ -46,8 +47,6 @@ public class BattleSystem : MonoBehaviour
     {
         //初期化処理
         phase = Phase.Start;
-
-        //SoundManager.Instance.PlayBGM(BGMSoundData.BGM.FirstBattle);
 
         //子要素のSelectableTextを取得する関数の呼び出し
         actionSelectionUI.Init();
@@ -115,6 +114,9 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Confirmation);
+            //
             if (actionSelectionUI.SelectedIndex == 0)
             {
                 attackSelection();
@@ -138,10 +140,14 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Confirmation);
             attackMove();
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Back);
             closeSelectionUI(attackSelectionUI);
         }
     }
@@ -154,10 +160,14 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Confirmation);
             magicMove();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Back);
             closeSelectionUI(magicSelectionUI);
         }
 
@@ -171,10 +181,14 @@ public class BattleSystem : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Confirmation);
             ultimateMove();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        {   
+            //決定SE再生
+            SEManager.Instance.PlaySE(SESoundData.SE.Back);
             closeSelectionUI(ultimateSelectionUI);
         }
 
@@ -266,6 +280,8 @@ public class BattleSystem : MonoBehaviour
         //勝利処理
         if(phase == Phase.BattleOver)
         {
+            //
+            SEManager.Instance.PlaySE(SESoundData.SE.Victory);
             yield return battleDialog.TypeDialog($"{enemyUnit.Battler.Base.Name}をたおした！");
             onNextScene(nextSceneName);
             yield break;
@@ -278,6 +294,8 @@ public class BattleSystem : MonoBehaviour
         //敗北処理
         if (phase == Phase.BattleOver)
         {
+            //
+            SEManager.Instance.PlaySE(SESoundData.SE.Defeat);
             yield return battleDialog.TypeDialog($"{playerUnit.Battler.Base.Name}は目の前がまっくらになった！", auto: false);
             phase = Phase.GameOver;
             if (phase == Phase.GameOver)
