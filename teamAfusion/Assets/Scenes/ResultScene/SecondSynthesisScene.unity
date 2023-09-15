@@ -319,7 +319,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2069315276}
         m_TargetAssemblyTypeName: ChoiceButtonController, Assembly-CSharp
-        m_MethodName: OnChoiceButton
+        m_MethodName: OnChoiceButton2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

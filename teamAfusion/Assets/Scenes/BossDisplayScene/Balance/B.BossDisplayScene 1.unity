@@ -239,7 +239,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1251788061}
         m_TargetAssemblyTypeName: DisplayController2, Assembly-CSharp
-        m_MethodName: OnBanlceDisplayButton1
+        m_MethodName: OnBanlceDisplayButtonn2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
