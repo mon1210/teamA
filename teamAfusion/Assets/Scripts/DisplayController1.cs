@@ -16,6 +16,6 @@ public class DisplayController1 : MonoBehaviour
     }
     public void OnMagicDisplayButton3()
     {
-        SceneManager.LoadScene("M.LastBattleScene");
+        SceneManager.LoadScene("M.ThirdBattleScene");
     }
 }
